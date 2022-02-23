@@ -19,8 +19,8 @@ We highly appreciate you sending us a postcard from your hometown, mentioning wh
 You can install the global ray via composer:
 
 ```bash
-composer global require spatie/global-ray;
-ray install;
+composer global require spatie/global-ray
+ray install
 ```
 
 When running `ray install` we'll add a line in your `php.ini` to automatically some code that makes the `ray()` function available.
