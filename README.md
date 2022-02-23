@@ -25,8 +25,6 @@ ray install
 
 When running `ray install`, we'll add a line in your `php.ini` to automatically load ray, allowing ray to be available in any PHP project or script.
 
-However, global ray will back-off if a `spatie/ray` package is detected in the working project directory. This allows you to continue using `laravel-ray` and our other framework based ray integrations, but still have ray available globally.
-
 ## Usage
 
 You can use `ray()` and [all Ray's framework agnostic functions](https://spatie.be/docs/ray/v1/usage/framework-agnostic-php-project) in any PHP file.
@@ -35,7 +33,7 @@ You can use `ray()` and [all Ray's framework agnostic functions](https://spatie.
 
 To use framework specific functionality, such as [viewing queries in Laravel](https://spatie.be/docs/ray/v1/usage/laravel#showing-queries), or [displaying mails in WordPress](https://spatie.be/docs/ray/v1/usage/wordpress#displaying-mails), you should still [install the relevant package or library](https://spatie.be/docs/ray/v1/installation-in-your-project/introduction).
 
-If a framework specific package is installed it will be used instead of the global Ray.
+If a framework specific package is detected, it will be used instead of the global Ray.
 
 ## Testing
 
