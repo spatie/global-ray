@@ -23,7 +23,9 @@ composer global require spatie/global-ray
 ray install
 ```
 
-When running `ray install` we'll add a line in your `php.ini` to automatically some code that makes the `ray()` function available.
+When running `ray install`, we'll add a line in your `php.ini` to automatically load ray, allowing ray to be available in any PHP project or script.
+
+However, global ray will back-off if a `spatie/ray` package is detected in the working project directory. This allows you to continue using `laravel-ray` and our other framework based ray integrations, but still have ray available globally.
 
 ## Usage
 
