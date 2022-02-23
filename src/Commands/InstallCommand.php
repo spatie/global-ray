@@ -48,6 +48,6 @@ class InstallCommand extends Command
 
     protected function getLoaderPath(): string
     {
-        return realpath(__DIR__ . "/../../loader.php");
+        return realpath(__DIR__ . "/../scripts/global-ray-loader.php");
     }
 }
