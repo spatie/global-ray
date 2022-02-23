@@ -1,6 +1,6 @@
 <?php
 
-it('can install global ray', function() {
+it('can install global ray', function () {
     $iniPath = getIniPath();
 
     $process = executeCommand("./bin/global-ray install --ini={$iniPath}");
