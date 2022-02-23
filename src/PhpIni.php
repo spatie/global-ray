@@ -32,6 +32,11 @@ class PhpIni
         file_put_contents($this->path, $contents);
     }
 
+    public function getPath()
+    {
+        return $this->path;
+    }
+
     /**
      * Find the option's line.
      *
