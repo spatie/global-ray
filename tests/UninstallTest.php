@@ -1,6 +1,6 @@
 <?php
 
-it('can uninstall global ray', function() {
+it('can uninstall global ray', function () {
     $iniPath = getIniPath();
 
     $process = executeCommand("./bin/global-ray uninstall --ini={$iniPath}");
