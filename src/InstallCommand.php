@@ -33,7 +33,7 @@ class InstallCommand extends Command
             $output->writeln('Building phar...');
 
             if (! $this->generateRayPhar($output)) {
-                return static::FAILURE;
+                return -1;
             }
 
             $output->writeln('Successfully built phar.');
@@ -50,7 +50,7 @@ class InstallCommand extends Command
 
         $output->writeln('Successfully updated PHP ini. Global Ray has been installed.');
 
-        return static::SUCCESS;
+        return 0;
     }
 
     protected function generateRayPhar(OutputInterface $output): bool
