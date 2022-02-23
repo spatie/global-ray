@@ -18,18 +18,18 @@ class BuildCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-            $output->writeln('Building phar...');
+        $output->writeln('Building phar...');
 
-            if (! $this->generateRayPhar($output)) {
-                return -1;
-            }
+        if (! $this->generateRayPhar($output)) {
+            return -1;
+        }
 
-            $output->writeln('Successfully built phar.');
+        $output->writeln('Successfully built phar.');
 
-            rename(
-                $this->getGeneratedRayPharPath(),
-                $this->getRestingRayPharPath()
-            );
+        rename(
+            $this->getGeneratedRayPharPath(),
+            $this->getRestingRayPharPath()
+        );
 
         $output->writeln("Successfully built the Ray Phar at {$this->getRestingRayPharPath()}.");
 
