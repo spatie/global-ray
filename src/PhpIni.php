@@ -46,7 +46,7 @@ class PhpIni
         } else {
             $contents = $option . $contents;
         }
-    
+
         file_put_contents($this->path, $contents);
     }
 
