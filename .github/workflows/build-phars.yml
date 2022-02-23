@@ -3,14 +3,14 @@ name: Build Phars
 on: [push, pull_request]
 
 jobs:
-  test:
+  build-phars:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: true
       matrix:
         os: [ubuntu-latest]
         php: [8.1, 8.0]
-        stability: [prefer-lowest, prefer-stable]
+        stability: [prefer-stable]
 
     name: P${{ matrix.php }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
