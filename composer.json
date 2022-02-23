@@ -1,9 +1,11 @@
 {
     "name": "spatie/global-ray",
-    "description": "Install Ray globally",
+    "description": "Enable Ray in all PHP files on your system",
     "keywords": [
         "spatie",
-        "global-ray"
+        "ray",
+        "debug",
+        "debugging"
     ],
     "homepage": "https://github.com/spatie/global-ray",
     "license": "MIT",

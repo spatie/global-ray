@@ -1,4 +1,4 @@
-# Use Ray in all PHP projects on your system
+# Enable Ray in all PHP files on your system
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/global-ray.svg?style=flat-square)](https://packagist.org/packages/spatie/global-ray)
 [![Tests](https://github.com/spatie/global-ray/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/spatie/global-ray/actions/workflows/run-tests.yml)
@@ -16,7 +16,7 @@ We highly appreciate you sending us a postcard from your hometown, mentioning wh
 
 ## Installation
 
-You can install the global ray via composer:
+You can install the global Ray via composer:
 
 ```bash
 composer global require spatie/global-ray
