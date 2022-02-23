@@ -6,7 +6,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use TitasGailius\Terminal\Terminal;
+use Symfony\Component\Process\Process;
 
 class InstallCommand extends Command
 {
@@ -30,9 +30,13 @@ class InstallCommand extends Command
         $ini->update('auto_prepend_file', null);
 
         if (! file_exists($this->getRestingRayPharPath())) {
+            $output->writeln('Building phar...');
+
             if (! $this->generateRayPhar($output)) {
                 return static::FAILURE;
             }
+
+            $output->writeln('Successfully built phar.');
 
             rename(
                 $this->getGeneratedRayPharPath(),
@@ -40,19 +44,27 @@ class InstallCommand extends Command
             );
         }
 
+        $output->writeln("Updating PHP ini: {$ini->getPath()}");
+
         $ini->update('auto_prepend_file', $this->getLoaderPath());
+
+        $output->writeln('Successfully updated PHP ini. Global Ray has been installed.');
 
         return static::SUCCESS;
     }
 
     protected function generateRayPhar(OutputInterface $output): bool
     {
-        $result = Terminal::builder()
-            ->output($output)
-            ->in(__DIR__.'/../generator')
-            ->run('composer install && composer build');
+        $process = Process::fromShellCommandline(
+            'composer install && composer build',
+            __DIR__.'/../generator'
+        );
 
-        return $result->successful();
+        $process->run();
+
+        $output->write($process->getOutput());
+
+        return $process->isSuccessful();
     }
 
     protected function getLoaderPath(): string

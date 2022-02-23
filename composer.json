@@ -18,7 +18,6 @@
     ],
     "require": {
         "php": "^8.0",
-        "titasgailius/terminal": "^1.1",
         "symfony/console": "^4.0|^5.0|^6.0",
         "symfony/process": "^4.2|^5.0|^6.0"
     },
@@ -41,14 +40,17 @@
     "scripts": {
         "build": [
             "cd generator;composer install",
-            "generator/vendor/bin/box compile"
+            "cd generator;vendor/bin/box compile"
         ],
         "test": "vendor/bin/pest",
         "test-coverage": "vendor/bin/pest --coverage",
         "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
