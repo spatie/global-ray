@@ -60,6 +60,8 @@ class InstallCommand extends Command
             __DIR__.'/../generator'
         );
 
+        $process->setOptions(['create_new_console' => true]);
+
         $process->run();
 
         $output->write($process->getOutput());
