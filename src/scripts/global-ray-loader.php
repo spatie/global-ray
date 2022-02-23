@@ -33,5 +33,4 @@ try {
         require_once $pharPath;
     }
 } catch (Exception $exception) {
-
 }
