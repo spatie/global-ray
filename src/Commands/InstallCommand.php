@@ -50,11 +50,4 @@ class InstallCommand extends Command
     {
         return realpath(__DIR__ . "/../../loader.php");
     }
-
-    protected function getRestingRayPharPath(): string
-    {
-        preg_match("#^\d.\d#", PHP_VERSION, $match);
-
-        return __DIR__ . "/../../ray-phars/ray_php_{$match[0]}.phar";
-    }
 }
