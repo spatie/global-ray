@@ -29,7 +29,7 @@ jobs:
         run: composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Build Phars
-        run: bin/ray install
+        run: composer build
 
       - name: Push Built Phars
         uses: stefanzweifel/git-auto-commit-action@v4
