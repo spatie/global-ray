@@ -1,41 +1,24 @@
 <?php
 
-namespace Stevebauman\SpatieGlobalRay;
+namespace Spatie\GlobalRay;
 
 use Exception;
 
 class PhpIni
 {
-    /**
-     * The PHP ini path.
-     *
-     * @var string
-     */
     protected $path;
 
-    /**
-     * Constructor.
-     *
-     * @param string $path
-     */
-    public function __construct($path)
+    public function __construct(string $path)
     {
         if (! file_exists($path)) {
-            throw new Exception('PHP ini file not found at path: ' . $path);
+            throw new Exception("PHP ini file not found at path: {$path}");
         }
 
         $this->path = $path;
     }
 
-    /**
-     * Update the PHP ini option.
-     *
-     * @param string $option
-     * @param string|null $value
-     *
-     * @return void
-     */
-    public function update($optionName, $value = null)
+
+    public function update(string $optionName, string $value = null): void
     {
         $contents = file_get_contents($this->path);
 
@@ -46,7 +29,7 @@ class PhpIni
         } else {
             $contents = $option . $contents;
         }
-    
+
         file_put_contents($this->path, $contents);
     }
 

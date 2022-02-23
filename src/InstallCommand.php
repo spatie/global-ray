@@ -1,6 +1,6 @@
 <?php
 
-namespace Stevebauman\SpatieGlobalRay;
+namespace Spatie\GlobalRay;
 
 use TitasGailius\Terminal\Terminal;
 use Symfony\Component\Console\Command\Command;
@@ -10,11 +10,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class InstallCommand extends Command
 {
-    /**
-     * Configure the command options.
-     *
-     * @return void
-     */
     protected function configure()
     {
         $this
@@ -23,22 +18,15 @@ class InstallCommand extends Command
             ->addOption('ini', null, InputOption::VALUE_REQUIRED, 'The full path to the PHP ini that should be updated');
     }
 
-    /**
-     * Execute the command.
-     *
-     * @param  \Symfony\Component\Console\Input\InputInterface  $input
-     * @param  \Symfony\Component\Console\Output\OutputInterface  $output
-     * @return int
-     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $ini = new PhpIni(
             $input->getOption('ini') ?? get_cfg_var('cfg_file_path')
         );
 
-        // Before installing, we will make sure to clear the
-        // option inside of the ini so we can safely
-        // replace the phar without PHP crashing.
+        // Before installing, we will make sure to clear the option
+        // inside of the ini so we can safely replace the phar without
+        // PHP crashing.
         $ini->update('auto_prepend_file', null);
 
         if (! file_exists($this->getRestingRayPharPath())) {
@@ -53,18 +41,11 @@ class InstallCommand extends Command
         }
 
         $ini->update('auto_prepend_file', $this->getLoaderPath());
-        
+
         return static::SUCCESS;
     }
 
-    /**
-     * Generate the Spatie Ray phar.
-     *
-     * @param OutputInterface $output
-     *
-     * @return bool
-     */
-    protected function generateRayPhar(OutputInterface $output)
+    protected function generateRayPhar(OutputInterface $output): bool
     {
         $result = Terminal::builder()
             ->output($output)
@@ -74,32 +55,17 @@ class InstallCommand extends Command
         return $result->successful();
     }
 
-    /**
-     * Get the path to the ray loader file.
-     *
-     * @return string
-     */
-    protected function getLoaderPath()
+    protected function getLoaderPath(): string
     {
         return __DIR__ . "/../loader.php";
     }
 
-    /**
-     * Get the generated ray phar path.
-     *
-     * @return string
-     */
-    protected function getGeneratedRayPharPath()
+    protected function getGeneratedRayPharPath(): string
     {
         return __DIR__ . "/../generator/ray.phar";
     }
 
-    /**
-     * Get the generated ray phar path.
-     *
-     * @return string
-     */
-    protected function getRestingRayPharPath()
+    protected function getRestingRayPharPath(): string
     {
         preg_match("#^\d.\d#", PHP_VERSION, $match);
 
