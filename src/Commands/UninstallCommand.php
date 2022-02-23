@@ -2,12 +2,12 @@
 
 namespace Spatie\GlobalRay\Commands;
 
+use function Spatie\GlobalRay\get_cfg_var;
 use Spatie\GlobalRay\Support\PhpIni;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use function Spatie\GlobalRay\get_cfg_var;
 
 class UninstallCommand extends Command
 {
