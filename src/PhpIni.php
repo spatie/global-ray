@@ -17,7 +17,6 @@ class PhpIni
         $this->path = $path;
     }
 
-
     public function update(string $optionName, string $value = null): void
     {
         $contents = file_get_contents($this->path);
