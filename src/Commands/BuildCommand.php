@@ -2,6 +2,7 @@
 
 namespace Spatie\GlobalRay\Commands;
 
+use Spatie\GlobalRay\Support\Ray;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -26,12 +27,14 @@ class BuildCommand extends Command
 
         $output->writeln('Successfully built phar.');
 
+        $rayRestingPharPath = Ray::getPharPath();
+
         rename(
             $this->getGeneratedRayPharPath(),
-            $this->getRestingRayPharPath()
+            $rayRestingPharPath
         );
 
-        $output->writeln("Successfully built the Ray Phar at {$this->getRestingRayPharPath()}.");
+        $output->writeln("Successfully built the Ray Phar at {$rayRestingPharPath}.");
 
         return 0;
     }
@@ -53,12 +56,5 @@ class BuildCommand extends Command
     protected function getGeneratedRayPharPath(): string
     {
         return realpath(__DIR__ . "/../../ray-phar-generator/ray.phar");
-    }
-
-    protected function getRestingRayPharPath(): string
-    {
-        $phpVersion = PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION;
-
-        return __DIR__ . "/../../ray-phars/ray_php_{$phpVersion}.phar";
     }
 }
