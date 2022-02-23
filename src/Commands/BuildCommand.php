@@ -57,8 +57,8 @@ class BuildCommand extends Command
 
     protected function getRestingRayPharPath(): string
     {
-        preg_match("#^\d.\d#", PHP_VERSION, $match);
+        $phpVersion = PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION;
 
-        return __DIR__ . "/../../ray-phars/ray_php_{$match[0]}.phar";
+        return __DIR__ . "/../../ray-phars/ray_php_{$phpVersion}.phar";
     }
 }

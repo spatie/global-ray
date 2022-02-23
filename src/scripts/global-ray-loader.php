@@ -1,11 +1,9 @@
 <?php
 
 try {
-    preg_match("#^\d.\d#", PHP_VERSION, $match);
+    $phpVersion = PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION;
 
-    $version = $match[0];
-
-    $pharPath = realpath(__DIR__ . "/../../ray-phars/ray_php_{$version}.phar");
+    $pharPath = realpath(__DIR__ . "/../../ray-phars/ray_php_{$phpVersion}.phar");
 
     $packages = [
         'spatie/ray',
