@@ -20,10 +20,10 @@ You can install the global Ray via composer:
 
 ```bash
 composer global require spatie/global-ray
-ray install
+global-ray install
 ```
 
-When running `ray install`, we'll add a line in your `php.ini` to automatically load ray, allowing ray to be available in any PHP project or script.
+When running `global-ray install`, we'll add a line in your `php.ini` to automatically load ray, allowing ray to be available in any PHP project or script.
 
 ## Usage
 
@@ -34,6 +34,35 @@ You can use `ray()` and [all Ray's framework agnostic functions](https://spatie.
 To use framework specific functionality, such as [viewing queries in Laravel](https://spatie.be/docs/ray/v1/usage/laravel#showing-queries), or [displaying mails in WordPress](https://spatie.be/docs/ray/v1/usage/wordpress#displaying-mails), you should still [install the relevant package or library](https://spatie.be/docs/ray/v1/installation-in-your-project/introduction).
 
 If a framework specific package is detected, it will be used instead of the global Ray.
+
+## How to uninstall
+
+To uninstall you must first issue this command:
+
+```bash
+global-ray install
+```
+
+This will remove the line in `php.ini` that automatically loads ray.
+
+After that, you can install the package itself using
+
+```bash
+composer global remove spatie/global-ray
+```
+
+
+## Troubleshooting
+
+If suddenly all of PHP scripts terminate very early with a strange error after upgrading PHP or switching to another version, then global ray might be the culprit. 
+
+As mentioned before, during install we slightly modify your `php.ini`. To manually uninstall global ray, remove the script named `global-ray-loader.php` in the `auto_prepend_file` directive in `php.ini`. 
+
+You find the location of your `php.ini` by executing this command:
+
+```php
+php --ini
+```
 
 ## Testing
 
