@@ -2,32 +2,36 @@
 
 namespace Spatie\GlobalRay\Commands;
 
-use Spatie\GlobalRay\Support\PhpIni;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\Process;
 
-class InstallCommand extends Command
+class BuildCommand extends Command
 {
     protected function configure()
     {
         $this
-            ->setName('install')
-            ->setDescription('Install Spatie Ray globally.')
-            ->addOption('ini', null, InputOption::VALUE_REQUIRED, 'The full path to the PHP ini that should be updated');
+            ->setName('build')
+            ->setDescription('Build the Ray Phar');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $ini = new PhpIni($input->getOption('ini'));
+            $output->writeln('Building phar...');
 
-        $output->writeln("Updating PHP ini: {$ini->getPath()}");
+            if (! $this->generateRayPhar($output)) {
+                return -1;
+            }
 
-        $ini->update('auto_prepend_file', $this->getLoaderPath());
+            $output->writeln('Successfully built phar.');
 
-        $output->writeln('Successfully updated PHP ini. Global Ray has been installed.');
+            rename(
+                $this->getGeneratedRayPharPath(),
+                $this->getRestingRayPharPath()
+            );
+
+        $output->writeln("Successfully built the Ray Phar at {$this->getRestingRayPharPath()}.");
 
         return 0;
     }
@@ -36,7 +40,7 @@ class InstallCommand extends Command
     {
         $process = Process::fromShellCommandline(
             'composer install && composer build',
-            __DIR__.'/../../generator'
+            __DIR__.'/../../ray-phar-generator'
         );
 
         $process->run();
@@ -46,9 +50,9 @@ class InstallCommand extends Command
         return $process->isSuccessful();
     }
 
-    protected function getLoaderPath(): string
+    protected function getGeneratedRayPharPath(): string
     {
-        return realpath(__DIR__ . "/../../loader.php");
+        return realpath(__DIR__ . "/../../ray-phar-generator/ray.phar");
     }
 
     protected function getRestingRayPharPath(): string

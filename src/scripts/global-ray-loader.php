@@ -4,7 +4,7 @@ preg_match("#^\d.\d#", PHP_VERSION, $match);
 
 $version = $match[0];
 
-$pharPath = __DIR__ . "/generator/phars/ray_php_{$version}.phar";
+$pharPath = realpath(__DIR__ . "/../../ray-phars/ray_php_{$version}.phar");
 
 $packages = [
     'spatie/ray',

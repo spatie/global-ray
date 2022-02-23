@@ -14,6 +14,11 @@
             "name": "Steve Bauman",
             "email": "info@spatie.be",
             "role": "Developer"
+        },
+        {
+            "name": "Freek Van der Herten",
+            "email": "freek@spatie.be",
+            "role": "Developer"
         }
     ],
     "require": {
@@ -37,7 +42,7 @@
         }
     },
     "scripts": {
-        "build": "bin/global-ray install",
+        "build": "bin/global-ray build",
         "test": "vendor/bin/pest",
         "test-coverage": "vendor/bin/pest --coverage",
         "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"

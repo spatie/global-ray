@@ -8,8 +8,12 @@ class PhpIni
 {
     protected $path;
 
-    public function __construct(string $path)
+    public function __construct(string $path = null)
     {
+        if (! $path) {
+            $path = get_cfg_var('cfg_file_path');
+        }
+
         if (! file_exists($path)) {
             throw new Exception("PHP ini file not found at path: {$path}");
         }
@@ -17,7 +21,7 @@ class PhpIni
         $this->path = $path;
     }
 
-    public function update(string $optionName, string $value = null): void
+    public function update(string $optionName, ?string $value): void
     {
         $contents = file_get_contents($this->path);
 

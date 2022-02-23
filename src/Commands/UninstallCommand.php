@@ -21,9 +21,7 @@ class UninstallCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $ini = new PhpIni(
-            $input->getOption('ini') ?? get_cfg_var('cfg_file_path')
-        );
+        $ini = new PhpIni($input->getOption('ini'));
 
         $ini->update('auto_prepend_file', null);
 

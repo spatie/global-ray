@@ -56,6 +56,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## Credits
 
 - [Steve Bauman](https://github.com/stevebauman)
+- [Freek Van der Herten](https://github.com/freekmurze)
 - [All Contributors](../../contributors)
 
 ## License

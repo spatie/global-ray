@@ -1,6 +1,7 @@
 #!/usr/bin/env php
 <?php
 
+use Spatie\GlobalRay\Commands\BuildCommand;
 use Spatie\GlobalRay\Commands\InstallCommand;
 use Spatie\GlobalRay\Commands\UninstallCommand;
 use Symfony\Component\Console\Application;
@@ -14,5 +15,7 @@ if (file_exists(__DIR__.'/../../../autoload.php')) {
 $app = new Application('Spatie Global Ray Installer', '1.0.0');
 $app->add(new InstallCommand());
 $app->add(new UninstallCommand());
+$app->add(new BuildCommand());
+
 
 $app->run();
