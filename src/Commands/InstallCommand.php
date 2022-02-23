@@ -1,7 +1,8 @@
 <?php
 
-namespace Spatie\GlobalRay;
+namespace Spatie\GlobalRay\Commands;
 
+use Spatie\GlobalRay\Support\PhpIni;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -57,7 +58,7 @@ class InstallCommand extends Command
     {
         $process = Process::fromShellCommandline(
             'composer install && composer build',
-            __DIR__.'/../generator'
+            __DIR__.'/../../generator'
         );
 
         $process->run();
@@ -69,18 +70,18 @@ class InstallCommand extends Command
 
     protected function getLoaderPath(): string
     {
-        return __DIR__ . "/../loader.php";
+        return realpath(__DIR__ . "/../../loader.php");
     }
 
     protected function getGeneratedRayPharPath(): string
     {
-        return __DIR__ . "/../generator/ray.phar";
+        return realpath(__DIR__ . "/../../generator/ray.phar");
     }
 
     protected function getRestingRayPharPath(): string
     {
         preg_match("#^\d.\d#", PHP_VERSION, $match);
 
-        return __DIR__ . "/../generator/phars/ray_php_{$match[0]}.phar";
+        return __DIR__ . "/../../generator/phars/ray_php_{$match[0]}.phar";
     }
 }

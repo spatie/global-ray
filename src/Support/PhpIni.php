@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\GlobalRay;
+namespace Spatie\GlobalRay\Support;
 
 use Exception;
 

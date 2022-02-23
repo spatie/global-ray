@@ -1,8 +1,8 @@
 #!/usr/bin/env php
 <?php
 
-use Spatie\GlobalRay\InstallCommand;
-use Spatie\GlobalRay\UninstallCommand;
+use Spatie\GlobalRay\Commands\InstallCommand;
+use Spatie\GlobalRay\Commands\UninstallCommand;
 use Symfony\Component\Console\Application;
 
 if (file_exists(__DIR__.'/../../../autoload.php')) {
