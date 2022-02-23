@@ -1,10 +1,10 @@
-# Install Ray globally
+# Use Ray in all PHP projects on your system
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/global-ray.svg?style=flat-square)](https://packagist.org/packages/spatie/global-ray)
 [![Tests](https://github.com/spatie/global-ray/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/spatie/global-ray/actions/workflows/run-tests.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/global-ray.svg?style=flat-square)](https://packagist.org/packages/spatie/global-ray)
 
-This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
+By installing Ray globally, you can use `ray()` and [all framework agnostic Ray functions](https://spatie.be/docs/ray/v1/usage/framework-agnostic-php-project) in any PHP app or script on your system.
 
 ## Support us
 
@@ -16,18 +16,24 @@ We highly appreciate you sending us a postcard from your hometown, mentioning wh
 
 ## Installation
 
-You can install the package via composer:
+You can install the global ray via composer:
 
 ```bash
-composer require spatie/global-ray
+composer global require spatie/global-ray;
+ray install;
 ```
+
+When running `ray install` we'll add a line in your `php.ini` to automatically some code that makes the `ray()` function available.
 
 ## Usage
 
-```php
-$skeleton = new Spatie\GlobalRay();
-echo $skeleton->echoPhrase('Hello, Spatie!');
-```
+You can use `ray()` and [all Ray's framework agnostic functions](https://spatie.be/docs/ray/v1/usage/framework-agnostic-php-project) in any PHP file.
+
+### Using framework specific functionality
+
+To use framework specific functionality, such as [viewing queries in Laravel](https://spatie.be/docs/ray/v1/usage/laravel#showing-queries), or [displaying mails in WordPress](https://spatie.be/docs/ray/v1/usage/wordpress#displaying-mails), you should still [install the relevant package or library](https://spatie.be/docs/ray/v1/installation-in-your-project/introduction).
+
+If a framework specific package is installed it will be used instead of the global Ray.
 
 ## Testing
 
