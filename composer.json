@@ -15,13 +15,17 @@
         }
     ],
     "require": {
-        "php": "^8.0"
+        "php": "^8.0",
+        "titasgailius/terminal": "^1.1",
+        "symfony/console": "^4.0|^5.0|^6.0",
+        "symfony/process": "^4.2|^5.0|^6.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.0",
-        "pestphp/pest": "^1.20",
-        "spatie/ray": "^1.28"
+        "pestphp/pest": "^1.20"
     },
+    "bin": [
+        "bin/ray"
+    ],
     "autoload": {
         "psr-4": {
             "Spatie\\GlobalRay\\": "src"
@@ -33,6 +37,7 @@
         }
     },
     "scripts": {
+        "build": "",
         "test": "vendor/bin/pest",
         "test-coverage": "vendor/bin/pest --coverage",
         "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"

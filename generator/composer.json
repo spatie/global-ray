@@ -1,0 +1,16 @@
+{
+    "require": {
+        "spatie/ray": "^1.0"
+    },
+    "require-dev": {
+        "humbug/box": "^3.16"
+    },
+    "config": {
+        "allow-plugins": {
+            "bamarni/composer-bin-plugin": true
+        }
+    },
+    "scripts": {
+        "build": "vendor/bin/box compile"
+    }
+}

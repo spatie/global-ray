@@ -1,0 +1,4 @@
+{
+    "output": "ray.phar",
+    "compactors": ["KevinGH\\Box\\Compactor\\PhpScoper"]
+}
