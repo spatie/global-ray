@@ -5,7 +5,9 @@ it('can uninstall global ray', function () {
 
     file_put_contents($iniPath, '');
 
-    $process = executeCommand("./bin/global-ray uninstall --ini={$iniPath}");
+    $ray = implode(DIRECTORY_SEPARATOR, ['.', 'bin', 'global-ray']);
+
+    $process = executeCommand("$ray uninstall --ini={$iniPath}");
 
     expect($process->isSuccessful())->toBeTrue();
 
