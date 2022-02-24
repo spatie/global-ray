@@ -7,7 +7,7 @@ use Symfony\Component\Process\Process;
 
 class CommandLine
 {
-    public static function run($command, $cwd, OutputInterface $output): ?int
+    public static function run($command, $cwd, OutputInterface $output): bool
     {
         if (method_exists(Process::class, 'fromShellCommandline')) {
             $process = Process::fromShellCommandline($command, $cwd);
@@ -19,6 +19,6 @@ class CommandLine
             $output->write($line);
         });
 
-        return $process->getExitCode();
+        return $process->isSuccessful();
     }
 }
