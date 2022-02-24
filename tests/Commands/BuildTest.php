@@ -1,7 +1,7 @@
 <?php
 
-use Spatie\GlobalRay\Support\Ray;
 use Spatie\GlobalRay\Commands\BuildCommand;
+use Spatie\GlobalRay\Support\Ray;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 
