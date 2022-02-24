@@ -7,7 +7,6 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Process\Process;
 
 class InstallCommand extends Command
 {
@@ -30,20 +29,6 @@ class InstallCommand extends Command
         $output->writeln('Successfully updated PHP ini. Global Ray has been installed.');
 
         return 0;
-    }
-
-    protected function generateRayPhar(OutputInterface $output): bool
-    {
-        $process = Process::fromShellCommandline(
-            'composer install && composer build',
-            __DIR__.'/../../generator'
-        );
-
-        $process->run();
-
-        $output->write($process->getOutput());
-
-        return $process->isSuccessful();
     }
 
     protected function getLoaderPath(): string

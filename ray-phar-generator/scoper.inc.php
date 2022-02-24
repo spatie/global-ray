@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'prefix' => 'Global',
+    'prefix' => 'GlobalRay',
     'expose-functions' => ['ray', 'rd'],
 ];

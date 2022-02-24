@@ -2,11 +2,11 @@
 
 namespace Spatie\GlobalRay\Commands;
 
+use Spatie\GlobalRay\Support\CommandLine;
 use Spatie\GlobalRay\Support\Ray;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Process\Process;
 
 class BuildCommand extends Command
 {
@@ -41,16 +41,11 @@ class BuildCommand extends Command
 
     protected function generateRayPhar(OutputInterface $output): bool
     {
-        $process = Process::fromShellCommandline(
-            'composer install && composer build',
-            __DIR__.'/../../ray-phar-generator'
+        return CommandLine::run(
+            'composer update && composer build',
+            __DIR__.'/../../ray-phar-generator',
+            $output
         );
-
-        $process->run();
-
-        $output->write($process->getOutput());
-
-        return $process->isSuccessful();
     }
 
     protected function getGeneratedRayPharPath(): string
