@@ -43,11 +43,13 @@ class BuildCommand extends Command
 
     protected function generateRayPhar(OutputInterface $output): bool
     {
-        return CommandLine::run(
-            'composer update && composer build',
-            __DIR__.'/../../ray-phar-generator',
-            $output
-        );
+        $cwd = __DIR__.'/../../ray-phar-generator';
+
+        if (! CommandLine::run('composer update', $cwd, $output)) {
+            return false;
+        }
+
+        return CommandLine::run('composer build', $cwd, $output);
     }
 
     protected function getGeneratedRayPharPath(): string
