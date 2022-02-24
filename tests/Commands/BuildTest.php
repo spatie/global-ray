@@ -1,13 +1,20 @@
 <?php
 
 use Spatie\GlobalRay\Support\Ray;
+use Spatie\GlobalRay\Commands\BuildCommand;
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Tester\CommandTester;
 
 it('can build the phar', function () {
-    $ray = implode(DIRECTORY_SEPARATOR, ['.', 'bin', 'global-ray']);
+    $app = new Application('Global Ray Installer');
 
-    $process = executeCommand("$ray build");
+    $app->add(new BuildCommand());
 
-    expect($process->isSuccessful())->toBeTrue();
+    $tester = new CommandTester($app->find('build'));
+
+    $statusCode = $tester->execute([]);
+
+    expect($statusCode)->toBe(0);
 
     expect(Ray::getPharPath())->toBeFile();
 });

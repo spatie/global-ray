@@ -1,15 +1,23 @@
 <?php
 
+use Spatie\GlobalRay\Commands\InstallCommand;
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Tester\CommandTester;
+
 it('can install global ray', function () {
     $iniPath = getIniPath();
 
     file_put_contents($iniPath, '');
 
-    $ray = implode(DIRECTORY_SEPARATOR, ['.', 'bin', 'global-ray']);
+    $app = new Application('Global Ray Installer');
 
-    $process = executeCommand("$ray install --ini={$iniPath}");
+    $app->add(new InstallCommand());
 
-    expect($process->isSuccessful())->toBeTrue();
+    $tester = new CommandTester($app->find('install'));
+
+    $statusCode = $tester->execute(['--ini' => $iniPath]);
+
+    expect($statusCode)->toBe(0);
 
     expect(file_get_contents($iniPath))->toContain('global-ray-loader.php');
 
