@@ -18,7 +18,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        run: git pull origin main
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
