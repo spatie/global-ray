@@ -21,7 +21,7 @@ class PhpIni
         $this->path = $path;
     }
 
-    public function update(string $optionName, ?string $value): void
+    public function update(string $optionName, ?string $value): bool
     {
         $contents = file_get_contents($this->path);
 
@@ -33,7 +33,7 @@ class PhpIni
             $contents = $option . $contents;
         }
 
-        file_put_contents($this->path, $contents);
+        return is_int(file_put_contents($this->path, $contents));
     }
 
     public function getPath()

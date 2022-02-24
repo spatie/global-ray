@@ -22,6 +22,8 @@ class BuildCommand extends Command
         $output->writeln('Building phar...');
 
         if (! $this->generateRayPhar($output)) {
+            $output->writeln('Failed generating phar.');
+
             return -1;
         }
 

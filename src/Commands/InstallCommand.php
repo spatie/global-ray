@@ -24,7 +24,11 @@ class InstallCommand extends Command
 
         $output->writeln("Updating PHP ini: {$ini->getPath()}");
 
-        $ini->update('auto_prepend_file', $this->getLoaderPath());
+        if (! $ini->update('auto_prepend_file', $this->getLoaderPath())) {
+            $output->writeln('Unable to update PHP ini.');
+
+            return -1;
+        }
 
         $output->writeln('Successfully updated PHP ini. Global Ray has been installed.');
 
