@@ -40,7 +40,7 @@ If a framework specific package is detected, it will be used instead of the glob
 To uninstall you must first issue this command:
 
 ```bash
-global-ray install
+global-ray uninstall
 ```
 
 This will remove the line in `php.ini` that automatically loads ray.
