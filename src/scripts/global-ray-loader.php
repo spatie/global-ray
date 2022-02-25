@@ -30,5 +30,5 @@ try {
     if (file_exists($pharPath)) {
         require_once $pharPath;
     }
-} catch (Exception $exception) {
+} catch (Throwable $exception) {
 }
