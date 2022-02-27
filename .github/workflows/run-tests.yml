@@ -33,5 +33,10 @@ jobs:
       - name: Install dependencies
         run: composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
+      - name: Configure for windows
+        if: matrix.os == 'windows-latest'
+        shell: cmd
+        run: ren ".\bin\global-ray" "global-ray.bat"
+
       - name: Execute tests
         run: vendor/bin/pest
