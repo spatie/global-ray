@@ -3,6 +3,7 @@
 namespace Spatie\GlobalRay\Commands;
 
 use Spatie\GlobalRay\Support\CommandLine;
+use Spatie\GlobalRay\Support\Composer;
 use Spatie\GlobalRay\Support\Ray;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -41,15 +42,15 @@ class BuildCommand extends Command
         return 0;
     }
 
-    protected function generateRayPhar(OutputInterface $output): bool
+    protected function generateRayPhar(): bool
     {
-        $cwd = __DIR__.'/../../ray-phar-generator';
+        $composer = new Composer(__DIR__.'/../../ray-phar-generator');
 
-        if (! CommandLine::run('composer update', $cwd, $output)) {
-            return false;
+        if ($composer->run('update') === 0) {
+            return $composer->run('build') === 0;
         }
-
-        return CommandLine::run('composer build', $cwd, $output);
+        
+        return false;
     }
 
     protected function getGeneratedRayPharPath(): string
