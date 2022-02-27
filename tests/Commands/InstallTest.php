@@ -4,7 +4,7 @@ it('can install global ray', function () {
     $iniPath = getIniPath();
 
     file_put_contents($iniPath, '');
-    
+
     $process = executeCommand("./bin/global-ray install --ini {$iniPath}");
 
     expect($process->isSuccessful())->toBeTrue();
