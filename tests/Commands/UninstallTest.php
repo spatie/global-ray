@@ -5,7 +5,7 @@ it('can uninstall global ray', function () {
 
     file_put_contents($iniPath, 'auto_prepend_file = loader.php');
 
-    $process = executeCommand("./bin/global-ray uninstall --ini {$iniPath}");
+    $process = executeCommand("\"./bin/global-ray\" uninstall --ini {$iniPath}");
 
     expect($process->isSuccessful())->toBeTrue();
 
