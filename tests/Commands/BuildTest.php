@@ -1,9 +1,14 @@
 <?php
 
 use Spatie\GlobalRay\Support\Ray;
+use Symfony\Component\Process\ExecutableFinder;
 
 it('can build the phar', function () {
-    $process = executeCommand('global-ray build', 'bin');
+    $finder = new ExecutableFinder();
+
+    $ray = $finder->find('global-ray', null, [realpath(__DIR__.'/../../bin')]);
+
+    $process = executeCommand([$ray,  'build']);
 
     expect($process->isSuccessful())->toBeTrue();
 

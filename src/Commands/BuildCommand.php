@@ -31,10 +31,16 @@ class BuildCommand extends Command
 
         $rayRestingPharPath = Ray::getPharPath();
 
-        rename(
+        $renamed = rename(
             $this->getGeneratedRayPharPath(),
             $rayRestingPharPath
         );
+
+        if (! $renamed) {
+            $output->writeln('Failed renaming generated phar.');
+
+            return -1;
+        }
 
         $output->writeln("Successfully built the Ray Phar at {$rayRestingPharPath}.");
 

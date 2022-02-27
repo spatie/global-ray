@@ -11,7 +11,7 @@ class Composer
 
     public function __construct($workingPath = null)
     {
-        $this->workingPath = $workingPath;
+        $this->setWorkingPath($workingPath);
     }
 
     public function run(string $command): int

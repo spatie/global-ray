@@ -1,7 +1,7 @@
 <?php
 
 try {
-    include __DIR__ . "/../Support/Ray.php";
+    include_once __DIR__ . "/../Support/Ray.php";
 
     $pharPath = \Spatie\GlobalRay\Support\Ray::getPharPath();
 
