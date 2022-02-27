@@ -2,7 +2,7 @@
 
 try {
     include __DIR__ . "/../Support/Ray.php";
-    
+
     $pharPath = \Spatie\GlobalRay\Support\Ray::getPharPath();
 
     $packages = [
