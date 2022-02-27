@@ -1,9 +1,9 @@
 <?php
 
 try {
-    $phpVersion = PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION;
+    include_once __DIR__ . "/../Support/Ray.php";
 
-    $pharPath = realpath(__DIR__ . "/../../ray-phars/ray_php_{$phpVersion}.phar");
+    $pharPath = \Spatie\GlobalRay\Support\Ray::getPharPath();
 
     $packages = [
         'spatie/ray',
@@ -28,7 +28,7 @@ try {
     }
 
     if (file_exists($pharPath)) {
-        require_once $pharPath;
+        include_once $pharPath;
     }
 } catch (Throwable $exception) {
 }

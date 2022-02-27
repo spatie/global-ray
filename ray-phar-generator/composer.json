@@ -12,6 +12,6 @@
         }
     },
     "scripts": {
-        "build": "vendor/bin/box compile"
+        "build": "vendor/bin/box compile --no-parallel"
     }
 }
