@@ -3,7 +3,7 @@
 use Symfony\Component\Process\ExecutableFinder;
 use Symfony\Component\Process\Process;
 
-function executeGlobalRay(string $command, array $args = [])
+function executeGlobalRay(string $command, array $args = []): Process
 {
     if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
         $process = executeCommand(
