@@ -13,7 +13,7 @@ it('can build the phar', function () {
     } else {
         $ray = $finder->find('global-ray', null, [realpath(__DIR__.'/../../bin')]);
     }
-    
+
     $process = executeCommand([$ray,  'build']);
 
     if (! $process->isSuccessful()) {
