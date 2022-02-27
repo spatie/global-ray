@@ -30,7 +30,7 @@ class Composer
         return ['composer'];
     }
 
-    protected function phpBinary(): string|bool
+    protected function phpBinary(): string
     {
         return (new PhpExecutableFinder())->find(false);
     }
