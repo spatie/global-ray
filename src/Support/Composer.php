@@ -28,7 +28,7 @@ class Composer
             die();
         }
 
-        return $process->getExitCode();
+        return $process->getExitCode() === 0;
     }
 
     protected function findComposer(): array
