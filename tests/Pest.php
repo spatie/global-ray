@@ -2,9 +2,11 @@
 
 use Symfony\Component\Process\Process;
 
-function executeCommand(string $command): Process
+function executeCommand(string $command, string $cwd = null): Process
 {
-    $process = Process::fromShellCommandline($command);
+    $process = Process::fromShellCommandline($command, $cwd);
+
+    $process->setTimeout(null);
 
     $process->run();
 

@@ -3,7 +3,7 @@
 use Spatie\GlobalRay\Support\Ray;
 
 it('can build the phar', function () {
-    $process = executeCommand("\"./bin/global-ray\" build");
+    $process = executeCommand('global-ray build', 'bin');
 
     expect($process->isSuccessful())->toBeTrue();
 

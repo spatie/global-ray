@@ -14,7 +14,7 @@ class Composer
         $this->workingPath = $workingPath;
     }
 
-    public function run($command): int
+    public function run(string $command): int
     {
         $command = array_merge($this->findComposer(), [$command]);
 
@@ -40,7 +40,7 @@ class Composer
         return (new Process($command, $this->workingPath))->setTimeout(null);
     }
 
-    public function setWorkingPath($path)
+    public function setWorkingPath(string $path)
     {
         $this->workingPath = realpath($path);
 
