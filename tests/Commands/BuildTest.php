@@ -7,7 +7,7 @@ it('can build the phar', function () {
     $finder = new ExecutableFinder();
 
     if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-        $process = executeCommand(['global-ray',  'build'], realpath(__DIR__.'/../../bin'));
+        $process = executeCommand(['php', 'global-ray',  'build'], realpath(__DIR__.'/../../bin'));
     } else {
         $ray = $finder->find('global-ray', null, [realpath(__DIR__.'/../../bin')]);
 
