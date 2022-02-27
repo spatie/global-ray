@@ -32,7 +32,7 @@ class Composer
 
     protected function phpBinary(): string|bool
     {
-        return (new PhpExecutableFinder)->find(false);
+        return (new PhpExecutableFinder())->find(false);
     }
 
     protected function getProcess(array $command): Process

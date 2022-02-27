@@ -2,7 +2,6 @@
 
 namespace Spatie\GlobalRay\Commands;
 
-use Spatie\GlobalRay\Support\CommandLine;
 use Spatie\GlobalRay\Support\Composer;
 use Spatie\GlobalRay\Support\Ray;
 use Symfony\Component\Console\Command\Command;
@@ -49,7 +48,7 @@ class BuildCommand extends Command
         if ($composer->run('update') === 0) {
             return $composer->run('build') === 0;
         }
-        
+
         return false;
     }
 
