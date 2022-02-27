@@ -22,11 +22,6 @@ class Composer
 
         $process->run();
 
-        if (! $process->isSuccessful()) {
-            echo $process->getOutput(). PHP_EOL;
-            echo $process->getErrorOutput() . PHP_EOL;
-        }
-
         return $process->isSuccessful();
     }
 
