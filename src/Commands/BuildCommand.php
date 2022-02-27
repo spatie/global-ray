@@ -51,8 +51,8 @@ class BuildCommand extends Command
     {
         $composer = new Composer(__DIR__.'/../../ray-phar-generator');
 
-        if ($composer->run('update') === 0) {
-            return $composer->run('build') === 0;
+        if ($composer->run('update')) {
+            return $composer->run('build');
         }
 
         return false;

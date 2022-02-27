@@ -11,10 +11,10 @@ class Composer
 
     public function __construct($workingPath = null)
     {
-        $this->workingPath = $workingPath;
+        $this->setWorkingPath($workingPath);
     }
 
-    public function run(string $command): int
+    public function run(string $command): bool
     {
         $command = array_merge($this->findComposer(), [$command]);
 
@@ -23,12 +23,11 @@ class Composer
         $process->run();
 
         if (! $process->isSuccessful()) {
-            var_dump($process->getOutput());
-            var_dump($process->getErrorOutput());
-            die();
+            echo $process->getOutput(). PHP_EOL;
+            echo $process->getErrorOutput() . PHP_EOL;
         }
 
-        return $process->getExitCode() === 0;
+        return $process->isSuccessful();
     }
 
     protected function findComposer(): array
