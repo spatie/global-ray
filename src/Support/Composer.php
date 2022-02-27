@@ -22,7 +22,7 @@ class Composer
 
         $process->run();
 
-        if (! $process->isSuccessful()){ 
+        if (! $process->isSuccessful()) {
             var_dump($process->getOutput());
             var_dump($process->getErrorOutput());
             die();
