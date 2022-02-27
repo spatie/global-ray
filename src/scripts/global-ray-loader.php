@@ -1,9 +1,9 @@
 <?php
 
 try {
-    $phpVersion = PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION;
-
-    $pharPath = realpath(__DIR__ . "/../../ray-phars/ray_php_{$phpVersion}.phar");
+    include __DIR__ . "/../Support/Ray.php";
+    
+    $pharPath = \Spatie\GlobalRay\Support\Ray::getPharPath();
 
     $packages = [
         'spatie/ray',
