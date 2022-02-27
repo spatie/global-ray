@@ -11,7 +11,7 @@ class Composer
 
     public function __construct($workingPath = null)
     {
-        $this->setWorkingPath($workingPath);
+        $this->workingPath = $workingPath;
     }
 
     public function run(string $command): int
@@ -27,7 +27,7 @@ class Composer
             return [$this->phpBinary(), 'composer.phar'];
         }
 
-        return [$this->phpBinary(), 'composer'];
+        return ['composer'];
     }
 
     protected function phpBinary(): string
