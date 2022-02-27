@@ -27,7 +27,7 @@ class Composer
             return [$this->phpBinary(), 'composer.phar'];
         }
 
-        return ['composer'];
+        return [$this->phpBinary(), 'composer'];
     }
 
     protected function phpBinary(): string
