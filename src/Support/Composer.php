@@ -18,7 +18,17 @@ class Composer
     {
         $command = array_merge($this->findComposer(), [$command]);
 
-        return $this->getProcess($command)->run();
+        $process = $this->getProcess($command);
+
+        $process->run();
+
+        if (! $process->isSuccessful()){ 
+            var_dump($process->getOutput());
+            var_dump($process->getErrorOutput());
+            die();
+        }
+
+        return $process->getExitCode();
     }
 
     protected function findComposer(): array
