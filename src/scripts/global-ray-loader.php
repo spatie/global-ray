@@ -28,7 +28,7 @@ try {
     }
 
     if (file_exists($pharPath)) {
-        include $pharPath;
+        include_once $pharPath;
     }
 } catch (Throwable $exception) {
 }
