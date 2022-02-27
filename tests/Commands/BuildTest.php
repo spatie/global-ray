@@ -10,6 +10,12 @@ it('can build the phar', function () {
 
     $process = executeCommand([$ray,  'build']);
 
+    if (! $process->isSuccessful()) {
+        var_dump($process->getOutput());
+        var_dump($process->getErrorOutput());
+        die();
+    }
+
     expect($process->isSuccessful())->toBeTrue();
 
     expect(Ray::getPharPath())->toBeFile();
