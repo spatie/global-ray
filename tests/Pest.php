@@ -1,8 +1,8 @@
 <?php
 
+use Spatie\GlobalRay\Support\Platform;
 use Symfony\Component\Process\ExecutableFinder;
 use Symfony\Component\Process\Process;
-use Spatie\GlobalRay\Support\Platform;
 
 function executeGlobalRay(string $command, array $args = []): Process
 {

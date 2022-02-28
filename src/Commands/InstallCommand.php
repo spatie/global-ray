@@ -28,7 +28,7 @@ class InstallCommand extends Command
 
         if ($ini->update('auto_prepend_file', $this->getLoaderPath())) {
             $output->writeln('Successfully updated PHP ini. Global Ray has been installed.');
-            
+
             return 0;
         }
 
