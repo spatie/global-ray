@@ -14,7 +14,6 @@ try {
         'spatie/laravel-ray',
         'spatie/wordpress-ray',
     ]);
-
 } catch (Throwable $exception) {
 }
 
