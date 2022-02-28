@@ -2,7 +2,9 @@
 
 namespace Spatie\GlobalRay\Commands;
 
+use Exception;
 use Spatie\GlobalRay\Support\Composer;
+use Spatie\GlobalRay\Support\Dump;
 use Spatie\GlobalRay\Support\Ray;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -19,47 +21,42 @@ class BuildCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('Building phar...');
+        $output->writeln('Building phars...');
 
-        if (! $this->generateRayPhar()) {
-            $output->writeln('Failed generating phar.');
+        $composerDirectory = __DIR__.'/../../ray-phar-generator';
+        $temporaryDestination = __DIR__ . "/../../ray-phar-generator/ray.phar";
+        $finalDestination = Ray::getPharPath();
+        $this->generatePhar($composerDirectory, $temporaryDestination, $finalDestination);
 
-            return -1;
-        }
+        $output->writeln('Successfully built Ray Phar.');
 
-        $output->writeln('Successfully built phar.');
+        $composerDirectory = __DIR__.'/../../dump-phar-generator';
+        $temporaryDestination = __DIR__ . "/../../dump-phar-generator/dump.phar";
+        $finalDestination = Dump::getPharPath();
+        $this->generatePhar($composerDirectory, $temporaryDestination, $finalDestination);
 
-        $rayRestingPharPath = Ray::getPharPath();
-
-        $renamed = rename(
-            $this->getGeneratedRayPharPath(),
-            $rayRestingPharPath
-        );
-
-        if (! $renamed) {
-            $output->writeln('Failed renaming generated phar.');
-
-            return -1;
-        }
-
-        $output->writeln("Successfully built the Ray Phar at {$rayRestingPharPath}.");
+        $output->writeln('Successfully built Dump Phar.');
 
         return 0;
     }
 
-    protected function generateRayPhar(): bool
+    protected function generatePhar(string $composerPath, string $temporaryDestination,  string $finalDestination)
     {
-        $composer = new Composer(__DIR__.'/../../ray-phar-generator');
+        $composer = new Composer($composerPath);
 
-        if ($composer->run('update')) {
-            return $composer->run('build');
+        if (! $composer->run('update')) {
+            throw new Exception('Could not generate phar');
         }
 
-        return false;
-    }
+        $composer->run('build');
 
-    protected function getGeneratedRayPharPath(): string
-    {
-        return realpath(__DIR__ . "/../../ray-phar-generator/ray.phar");
+        $result = rename(
+            $temporaryDestination,
+            $finalDestination
+        );
+
+        if (! $result) {
+            throw new Exception('Could not generate phar');
+        }
     }
 }

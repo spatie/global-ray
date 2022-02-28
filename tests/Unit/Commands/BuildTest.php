@@ -1,5 +1,6 @@
 <?php
 
+use Spatie\GlobalRay\Support\Dump;
 use Spatie\GlobalRay\Support\Ray;
 
 it('can build the phar', function () {
@@ -8,4 +9,5 @@ it('can build the phar', function () {
     expect($process->isSuccessful())->toBeTrue();
 
     expect(Ray::getPharPath())->toBeFile();
+    expect(Dump::getPharPath())->toBeFile();
 });

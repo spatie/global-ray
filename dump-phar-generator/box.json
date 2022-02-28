@@ -1,0 +1,4 @@
+{
+    "output": "dump.phar",
+    "compactors": ["KevinGH\\Box\\Compactor\\PhpScoper"]
+}
