@@ -7,6 +7,19 @@ try {
 
     $pharPath = Ray::getPharPath();
 
+    globalRayPharLoader($pharPath, [
+        'spatie/ray',
+        'spatie/yii-ray',
+        'spatie/craft-ray',
+        'spatie/laravel-ray',
+        'spatie/wordpress-ray',
+    ]);
+
+} catch (Throwable $exception) {
+}
+
+function globalRayPharLoader(string $pharPath, array $unlessDetectedPackages)
+{
     $packages = [
         'spatie/ray',
         'spatie/yii-ray',
@@ -22,7 +35,7 @@ try {
 
         foreach (['require', 'require-dev'] as $require) {
             foreach ($composer[$require] ?? [] as $package => $version) {
-                if (in_array($package, $packages)) {
+                if (in_array($package, $unlessDetectedPackages)) {
                     return;
                 }
             }
@@ -32,5 +45,4 @@ try {
     if (file_exists($pharPath)) {
         include_once $pharPath;
     }
-} catch (Throwable $exception) {
 }
