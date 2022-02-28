@@ -1,9 +1,11 @@
 <?php
 
+use Spatie\GlobalRay\Support\Ray;
+
 try {
     include_once __DIR__ . "/../Support/Ray.php";
 
-    $pharPath = \Spatie\GlobalRay\Support\Ray::getPharPath();
+    $pharPath = Ray::getPharPath();
 
     $packages = [
         'spatie/ray',
