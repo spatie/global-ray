@@ -5,9 +5,7 @@ use Spatie\GlobalRay\Support\Ray;
 
 try {
     include_once __DIR__ . "/../Support/Ray.php";
-
     $rayPharPath = Ray::getPharPath();
-
     globalRayPharLoader($rayPharPath, [
         'spatie/ray',
         'spatie/yii-ray',
@@ -17,7 +15,6 @@ try {
     ]);
 
     include_once __DIR__ . "/../Support/Dump.php";
-
     $dumpPharPath = Dump::getPharPath();
     globalRayPharLoader($dumpPharPath, [
         'laravel/framework',
