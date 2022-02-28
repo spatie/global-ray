@@ -2,10 +2,11 @@
 
 use Symfony\Component\Process\ExecutableFinder;
 use Symfony\Component\Process\Process;
+use Spatie\GlobalRay\Support\Platform;
 
 function executeGlobalRay(string $command, array $args = []): Process
 {
-    if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+    if (Platform::isWindows()) {
         $process = executeCommand(
             array_merge(['php', 'global-ray',  $command], $args),
             realpath(__DIR__.'/../bin')
