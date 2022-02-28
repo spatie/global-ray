@@ -19,9 +19,8 @@ try {
     globalRayPharLoader($dumpPharPath, [
         'laravel/framework',
         'illuminate/support',
-        'symfony/var-dumper'
+        'symfony/var-dumper',
     ]);
-
 } catch (Throwable $exception) {
 }
 
