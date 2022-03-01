@@ -10,6 +10,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class InstallCommand extends Command
 {
+    use RetriesAsWindowsAdmin;
+
     protected function configure()
     {
         $this
@@ -24,8 +26,22 @@ class InstallCommand extends Command
 
         $output->writeln("Updating PHP ini: {$ini->getPath()}");
 
-        if (! $ini->update('auto_prepend_file', $this->getLoaderPath())) {
+        if ($ini->update('auto_prepend_file', $this->getLoaderPath())) {
+            $output->writeln('Successfully updated PHP ini. Global Ray has been installed.');
+
+            return 0;
+        }
+
+        if (! $this->shouldRetryAsWindowsAdmin($ini, $input)) {
             $output->writeln('Unable to update PHP ini.');
+
+            return -1;
+        }
+
+        $output->writeln('Unable to update PHP ini. Access is denied.');
+
+        if (! $this->retryAsWindowsAdmin($ini, $input, $output)) {
+            $output->writeln('Failed updating PHP ini.');
 
             return -1;
         }

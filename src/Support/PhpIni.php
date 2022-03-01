@@ -36,6 +36,11 @@ class PhpIni
         return is_int(file_put_contents($this->path, $contents));
     }
 
+    public function getContents()
+    {
+        return file_get_contents($this->path);
+    }
+
     public function getPath()
     {
         return $this->path;

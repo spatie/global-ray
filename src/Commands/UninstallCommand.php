@@ -10,6 +10,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class UninstallCommand extends Command
 {
+    use RetriesAsWindowsAdmin;
+
     protected function configure()
     {
         $this
@@ -22,7 +24,27 @@ class UninstallCommand extends Command
     {
         $ini = new PhpIni($input->getOption('ini'));
 
-        $ini->update('auto_prepend_file', null);
+        $output->writeln("Updating PHP ini: {$ini->getPath()}");
+
+        if ($ini->update('auto_prepend_file', null)) {
+            $output->writeln('Successfully updated PHP ini. Global Ray has been uninstalled.');
+
+            return 0;
+        }
+
+        if (! $this->shouldRetryAsWindowsAdmin($ini, $input)) {
+            $output->writeln('Unable to update PHP ini.');
+
+            return -1;
+        }
+
+        $output->writeln('Unable to update PHP ini. Access is denied.');
+
+        if (! $this->retryAsWindowsAdmin($ini, $input, $output)) {
+            $output->writeln('Failed updating PHP ini.');
+
+            return -1;
+        }
 
         $output->writeln('Successfully updated PHP ini. Global Ray has been uninstalled.');
 
