@@ -46,7 +46,10 @@
         "build": "bin/global-ray build",
         "test": "vendor/bin/pest",
         "test-coverage": "vendor/bin/pest --coverage",
-        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes",
+        "pre-package-uninstall": [
+            "bin/global-ray uninstall"
+        ]
     },
     "config": {
         "sort-packages": true,
