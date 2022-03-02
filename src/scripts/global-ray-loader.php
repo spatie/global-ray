@@ -5,17 +5,18 @@ namespace Spatie\GlobalRay;
 include_once __DIR__ . "/../Support/Ray.php";
 include_once __DIR__ . "/../Support/Dump.php";
 
-use Spatie\GlobalRay\Support\Ray;
 use Spatie\GlobalRay\Support\Dump;
+use Spatie\GlobalRay\Support\Ray;
 
-class PharLoader {
+class PharLoader
+{
     public static function load(string $pharPath, array $unlessDetectedPackages)
     {
         $composerJson = getcwd() . '/composer.json';
 
         if (file_exists($composerJson)) {
             $composer = json_decode(file_get_contents($composerJson), true);
-    
+
             foreach (['require', 'require-dev'] as $require) {
                 foreach ($composer[$require] ?? [] as $package => $version) {
                     if (in_array($package, $unlessDetectedPackages)) {
@@ -24,7 +25,7 @@ class PharLoader {
                 }
             }
         }
-    
+
         if (file_exists($pharPath)) {
             include_once $pharPath;
         }
