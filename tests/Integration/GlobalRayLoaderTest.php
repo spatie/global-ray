@@ -15,7 +15,3 @@ it('will resolve rd global function', function () {
 it('will not generate exceptions when calling ray', function () {
     ray('foo');
 })->expectNotToPerformAssertions();
-
-it('will not generate exceptions when calling rd', function () {
-    ray('rd');
-})->expectNotToPerformAssertions();
