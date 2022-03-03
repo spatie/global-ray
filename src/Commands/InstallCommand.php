@@ -40,7 +40,7 @@ class InstallCommand extends Command
         $output->writeln('   - ray()->charles(): Let\'s dance!');
         $output->writeln('');
         $output->writeln('   📗 You can see more Ray functions in the docs:');
-        $output->writeln('   https://spatie.be/docs/ray/v1/usage/framework-agnostic-php-project');
+        $output->writeln('   <href=https://spatie.be/docs/ray/v1/usage/framework-agnostic-php-project>https://spatie.be/docs/ray/v1/usage/framework-agnostic-php-project</>');
         $output->writeln('');
 
         $helper = $this->getHelper('question');
@@ -88,7 +88,7 @@ class InstallCommand extends Command
 
         $output->writeln('   ✅ Successfully updated PHP ini. Global Ray has been installed.');
         $output->writeln('');
-        $output->writeln('   ⚡️ Get your Ray license at https://myray.app');
+        $output->writeln('   ⚡️ Get your Ray license at <href=https://myray.app>https://myray.app</>');
         $output->writeln('   Happy debugging!');
         $output->writeln('');
 
