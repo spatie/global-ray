@@ -1,4 +1,4 @@
-# Enable `ray(), `dd()` and `dump()` in all PHP files on your system
+# Enable `ray()`, `dd()` and `dump()` in all PHP files on your system
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/global-ray.svg?style=flat-square)](https://packagist.org/packages/spatie/global-ray)
 [![Tests](https://github.com/spatie/global-ray/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/spatie/global-ray/actions/workflows/run-tests.yml)
