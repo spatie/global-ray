@@ -39,7 +39,7 @@ You can use `ray()` and [all Ray's framework agnostic functions](https://spatie.
 
 The `rd()`, `dump()` and `dd()` will also be available in any PHP project or script.
 
-### Using framework specific functionality
+## Using framework specific functionality
 
 To use framework specific functionality, such as [viewing queries in Laravel](https://spatie.be/docs/ray/v1/usage/laravel#showing-queries), or [displaying mails in WordPress](https://spatie.be/docs/ray/v1/usage/wordpress#displaying-mails), you should still [install the relevant package or library](https://spatie.be/docs/ray/v1/installation-in-your-project/introduction).
 
