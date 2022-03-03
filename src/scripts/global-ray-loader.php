@@ -31,7 +31,7 @@ class PharLoader
         }
     }
 
-    public static function isRunningTinkerwell()
+    public static function isRunningInLaravelAwareApp()
     {
         return defined('STDIN')
             && strpos($_SERVER['argv'][0] ?? '', 'tinker.phar') !== false;
@@ -39,7 +39,7 @@ class PharLoader
 }
 
 try {
-    if (! PharLoader::isRunningTinkerwell()) {
+    if (! PharLoader::isRunningInLaravelAwareApp()) {
         PharLoader::load(Dump::getPharPath(), [
             'laravel/framework',
             'illuminate/support',
