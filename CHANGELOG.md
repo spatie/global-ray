@@ -2,6 +2,10 @@
 
 All notable changes to `global-ray` will be documented in this file.
 
+## 1.0.2 - 2022-03-03
+
+- add dump phars for each php version
+
 ## 1.0.1 - 2022-03-03
 
 - fix links in output
