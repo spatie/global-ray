@@ -1,10 +1,18 @@
-# Enable Ray in all PHP files on your system
+# Enable `ray(), `dd()` and `dump()` in all PHP files on your system
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/global-ray.svg?style=flat-square)](https://packagist.org/packages/spatie/global-ray)
 [![Tests](https://github.com/spatie/global-ray/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/spatie/global-ray/actions/workflows/run-tests.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/global-ray.svg?style=flat-square)](https://packagist.org/packages/spatie/global-ray)
 
-By installing Ray globally, you can use `ray()` and [all framework agnostic Ray functions](https://spatie.be/docs/ray/v1/usage/framework-agnostic-php-project) in any PHP app or script on your system.
+[Ray](https://myray.app) is a wonderful desktop application that can help you debug applications faster. It can beautifully show you all debugging information, can pause your code, measure performance and [a whole lot more](https://spatie.be/docs/ray/v1/usage/framework-agnostic-php-project).
+
+To send debugging information to Ray, you can use the `ray()` function. 
+
+By installing `spatie/global-ray`, you can use `ray()` and [all framework agnostic Ray functions](https://spatie.be/docs/ray/v1/usage/framework-agnostic-php-project) in any PHP app or script on your system. 
+
+If you installed a specific Ray package, such as [spatie/laravel-ray](https://spatie.be/docs/ray/v1/usage/laravel) in your project already, then `ray()` will execute that specific version, so you can use still use framework specific things such as `ray()->showQueries()` to show all executed queries.
+
+❤️ As a bonus the popular `dd` and  `dump` functions will be made available globally too.
 
 ## Support us
 
@@ -23,11 +31,13 @@ composer global require spatie/global-ray
 global-ray install
 ```
 
-When running `global-ray install`, we'll add a line in your `php.ini` to automatically load ray, allowing ray to be available in any PHP project or script.
+When running `global-ray install`, we'll add a line in your `php.ini` to automatically load the functions provided by this package.
 
 ## Usage
 
 You can use `ray()` and [all Ray's framework agnostic functions](https://spatie.be/docs/ray/v1/usage/framework-agnostic-php-project) in any PHP file.
+
+The `rd()`, `dump()` and `dd()` will also be available in any PHP project or script.
 
 ### Using framework specific functionality
 
