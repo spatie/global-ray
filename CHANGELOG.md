@@ -2,6 +2,10 @@
 
 All notable changes to `global-ray` will be documented in this file.
 
+## 0.0.9 - 2022-03-03
+
+- experimental release
+
 ## 0.0.8 - 2022-03-03
 
 - experimental release

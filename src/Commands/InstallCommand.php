@@ -46,8 +46,9 @@ class InstallCommand extends Command
         $helper = $this->getHelper('question');
         $question = new ConfirmationQuestion('   🤙 Do you wish to install Ray globally? (Y/n) > ', true);
 
-        if (!$helper->ask($input, $output, $question)) {
+        if (! $helper->ask($input, $output, $question)) {
             $output->writeln('   Cancelling...');
+
             return Command::SUCCESS;
         }
 

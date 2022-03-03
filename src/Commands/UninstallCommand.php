@@ -30,7 +30,6 @@ class UninstallCommand extends Command
         $output->writeln('');
 
         if ($ini->update('auto_prepend_file', null)) {
-
             $output->writeln('  👋 Successfully updated PHP ini. Global Ray has been uninstalled.');
             $output->writeln('');
 
