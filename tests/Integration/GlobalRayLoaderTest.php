@@ -8,6 +8,10 @@ it('will resolve ray global function', function () {
     expect(function_exists('ray'))->toBeTrue();
 });
 
-it('will not generate exceptions', function () {
+it('will resolve rd global function', function () {
+    expect(function_exists('rd'))->toBeTrue();
+});
+
+it('will not generate exceptions when calling ray', function () {
     ray('foo');
 })->expectNotToPerformAssertions();
