@@ -1,6 +1,6 @@
 {
     "require": {
-        "spatie/ray": "^1.34"
+        "spatie/ray": "^1.34.1"
     },
     "require-dev": {
         "humbug/box": "^3.15"
