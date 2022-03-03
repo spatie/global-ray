@@ -24,29 +24,37 @@ class UninstallCommand extends Command
     {
         $ini = new PhpIni($input->getOption('ini'));
 
-        $output->writeln("Updating PHP ini: {$ini->getPath()}");
+
+        $output->writeln('');
+        $output->writeln("  Updating PHP ini: {$ini->getPath()}...");
+        $output->writeln('');
 
         if ($ini->update('auto_prepend_file', null)) {
-            $output->writeln('Successfully updated PHP ini. Global Ray has been uninstalled.');
+
+            $output->writeln('  👋 Successfully updated PHP ini. Global Ray has been uninstalled.');
+            $output->writeln('');
 
             return 0;
         }
 
         if (! $this->shouldRetryAsWindowsAdmin($ini, $input)) {
-            $output->writeln('Unable to update PHP ini.');
+            $output->writeln('  ❌ Unable to update PHP ini.');
+            $output->writeln('');
 
             return -1;
         }
 
-        $output->writeln('Unable to update PHP ini. Access is denied.');
+        $output->writeln('  ❌ Unable to update PHP ini. Access is denied.');
 
         if (! $this->retryAsWindowsAdmin($ini, $input, $output)) {
-            $output->writeln('Failed updating PHP ini.');
+            $output->writeln('  ❌ Failed updating PHP ini.');
+            $output->writeln('');
 
             return -1;
         }
 
-        $output->writeln('Successfully updated PHP ini. Global Ray has been uninstalled.');
+        $output->writeln('   👋 Successfully updated PHP ini. Global Ray has been uninstalled.');
+        $output->writeln('');
 
         return 0;
     }
