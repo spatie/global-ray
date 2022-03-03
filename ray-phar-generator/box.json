@@ -1,5 +1,6 @@
 {
     "output": "ray.phar",
     "check-requirements": false,
-    "compactors": ["KevinGH\\Box\\Compactor\\PhpScoper"]
+    "compactors": ["KevinGH\\Box\\Compactor\\PhpScoper"],
+    "shebang": false
 }
