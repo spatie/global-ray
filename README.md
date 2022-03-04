@@ -53,7 +53,7 @@ To uninstall you must first issue this command:
 global-ray uninstall
 ```
 
-This will remove the line in `php.ini` that automatically loads ray.
+This will remove the line in `php.ini` that automatically loads `ray()` and related functions.
 
 After that, you can install the package itself using
 
