@@ -55,7 +55,7 @@ global-ray uninstall
 
 This will remove the line in `php.ini` that automatically loads `ray()` and related functions.
 
-After that, you can install the package itself using
+After that, you can uninstall the package itself using
 
 ```bash
 composer global remove spatie/global-ray
