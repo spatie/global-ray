@@ -69,7 +69,7 @@ class InstallCommand extends Command
 
         if (! $this->shouldRetryAsWindowsAdmin($ini, $input)) {
             $output->writeln('   ❌ Unable to update PHP ini.');
-            
+
             $this->displayManualInstallation($output, $ini);
 
             return -1;
