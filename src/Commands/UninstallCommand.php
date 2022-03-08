@@ -6,6 +6,7 @@ use Spatie\GlobalRay\Support\PhpIni;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\Output;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class UninstallCommand extends Command
@@ -38,7 +39,8 @@ class UninstallCommand extends Command
 
         if (! $this->shouldRetryAsWindowsAdmin($ini, $input)) {
             $output->writeln('  ❌ Unable to update PHP ini.');
-            $output->writeln('');
+
+            $this->displayManualUninstall($output, $ini);
 
             return -1;
         }
@@ -47,7 +49,8 @@ class UninstallCommand extends Command
 
         if (! $this->retryAsWindowsAdmin($ini, $input, $output)) {
             $output->writeln('  ❌ Failed updating PHP ini.');
-            $output->writeln('');
+
+            $this->displayManualUninstall($output, $ini);
 
             return -1;
         }
@@ -56,5 +59,14 @@ class UninstallCommand extends Command
         $output->writeln('');
 
         return 0;
+    }
+
+    protected function displayManualUninstall(Output $output, PhpIni $ini)
+    {
+        $output->writeln('');
+        $output->writeln("   To uninstall manually, remove the below option from your php.ini configuration file: {$ini->getPath()}...");
+        $output->writeln('');
+        $output->writeln("auto_prepend_file = ");
+        $output->writeln('');
     }
 }
