@@ -63,7 +63,7 @@ class UninstallCommand extends Command
     protected function displayManualUninstall(OutputInterface $output, PhpIni $ini)
     {
         $output->writeln('');
-        $output->writeln("   To uninstall manually, remove the below option from your php.ini configuration file: {$ini->getPath()}...");
+        $output->writeln("   To uninstall manually, remove the below option from your PHP ini configuration file: {$ini->getPath()}...");
         $output->writeln('');
         $output->writeln("auto_prepend_file = ");
         $output->writeln('');

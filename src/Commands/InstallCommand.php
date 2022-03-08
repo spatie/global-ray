@@ -101,7 +101,7 @@ class InstallCommand extends Command
     protected function displayManualInstallation(OutputInterface $output, PhpIni $ini)
     {
         $output->writeln('');
-        $output->writeln("   To install manually, paste the below option into your php.ini configuration file: {$ini->getPath()}...");
+        $output->writeln("   To install manually, paste the below option into your PHP ini configuration file: {$ini->getPath()}...");
         $output->writeln('');
         $output->writeln("auto_prepend_file = {$this->getLoaderPath()}");
         $output->writeln('');
