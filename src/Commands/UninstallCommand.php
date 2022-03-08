@@ -6,7 +6,6 @@ use Spatie\GlobalRay\Support\PhpIni;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\Output;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class UninstallCommand extends Command
@@ -61,7 +60,7 @@ class UninstallCommand extends Command
         return 0;
     }
 
-    protected function displayManualUninstall(Output $output, PhpIni $ini)
+    protected function displayManualUninstall(OutputInterface $output, PhpIni $ini)
     {
         $output->writeln('');
         $output->writeln("   To uninstall manually, remove the below option from your php.ini configuration file: {$ini->getPath()}...");
