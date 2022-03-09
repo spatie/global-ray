@@ -19,7 +19,7 @@ trait RetriesAsWindowsAdmin
 
     protected function retryAsWindowsAdmin(PhpIni $ini, Input $input, Output $output): bool
     {
-        $question = new ConfirmationQuestion('Retry as Adminstrator?', false);
+        $question = new ConfirmationQuestion('   Retry as Adminstrator? (Y/n)', false);
 
         if (! $this->getHelper('question')->ask($input, $output, $question)) {
             return false;

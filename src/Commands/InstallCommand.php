@@ -60,20 +60,16 @@ class InstallCommand extends Command
         $output->writeln('');
         $output->writeln('');
 
-
         if ($ini->update('auto_prepend_file', $this->getLoaderPath())) {
-            $output->writeln('   ✅ Successfully updated PHP ini. Global Ray has been installed.');
-            $output->writeln('');
-            $output->writeln('   ⚡️ Get your Ray license at <href=https://myray.app>https://myray.app</>');
-            $output->writeln('');
-            $output->writeln('   Happy debugging!');
-            $output->writeln('');
+            $this->displaySuccessfulInstallation($output);
 
             return 0;
         }
 
         if (! $this->shouldRetryAsWindowsAdmin($ini, $input)) {
             $output->writeln('   ❌ Unable to update PHP ini.');
+
+            $this->displayManualInstallation($output, $ini);
 
             return -1;
         }
@@ -83,16 +79,32 @@ class InstallCommand extends Command
         if (! $this->retryAsWindowsAdmin($ini, $input, $output)) {
             $output->writeln('   ❌ Failed updating PHP ini.');
 
+            $this->displayManualInstallation($output, $ini);
+
             return -1;
         }
 
+        $this->displaySuccessfulInstallation($output);
+
+        return 0;
+    }
+
+    protected function displaySuccessfulInstallation(OutputInterface $output)
+    {
         $output->writeln('   ✅ Successfully updated PHP ini. Global Ray has been installed.');
         $output->writeln('');
         $output->writeln('   ⚡️ Get your Ray license at <href=https://myray.app>https://myray.app</>');
         $output->writeln('   Happy debugging!');
         $output->writeln('');
+    }
 
-        return 0;
+    protected function displayManualInstallation(OutputInterface $output, PhpIni $ini)
+    {
+        $output->writeln('');
+        $output->writeln("   To install manually, paste the below option into your PHP ini configuration file: {$ini->getPath()}...");
+        $output->writeln('');
+        $output->writeln("auto_prepend_file = {$this->getLoaderPath()}");
+        $output->writeln('');
     }
 
     protected function getLoaderPath(): string

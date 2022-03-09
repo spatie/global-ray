@@ -38,7 +38,8 @@ class UninstallCommand extends Command
 
         if (! $this->shouldRetryAsWindowsAdmin($ini, $input)) {
             $output->writeln('  ❌ Unable to update PHP ini.');
-            $output->writeln('');
+
+            $this->displayManualUninstall($output, $ini);
 
             return -1;
         }
@@ -47,7 +48,8 @@ class UninstallCommand extends Command
 
         if (! $this->retryAsWindowsAdmin($ini, $input, $output)) {
             $output->writeln('  ❌ Failed updating PHP ini.');
-            $output->writeln('');
+
+            $this->displayManualUninstall($output, $ini);
 
             return -1;
         }
@@ -56,5 +58,14 @@ class UninstallCommand extends Command
         $output->writeln('');
 
         return 0;
+    }
+
+    protected function displayManualUninstall(OutputInterface $output, PhpIni $ini)
+    {
+        $output->writeln('');
+        $output->writeln("   To uninstall manually, remove the below option from your PHP ini configuration file: {$ini->getPath()}...");
+        $output->writeln('');
+        $output->writeln("auto_prepend_file = ");
+        $output->writeln('');
     }
 }
