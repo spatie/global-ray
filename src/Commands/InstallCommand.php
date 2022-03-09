@@ -11,6 +11,7 @@ use Symfony\Component\Console\Question\ConfirmationQuestion;
 
 class InstallCommand extends Command
 {
+    use ConfirmsPhpIniPath;
     use RetriesAsWindowsAdmin;
 
     protected function configure()
@@ -43,18 +44,18 @@ class InstallCommand extends Command
         $output->writeln('   <href=https://spatie.be/docs/ray/v1/usage/framework-agnostic-php-project>https://spatie.be/docs/ray/v1/usage/framework-agnostic-php-project</>');
         $output->writeln('');
 
-        $helper = $this->getHelper('question');
         $question = new ConfirmationQuestion('   🤙 Do you wish to install Ray globally? (Y/n) > ', true);
 
-        if (! $helper->ask($input, $output, $question)) {
+        if (! $this->getHelper('question')->ask($input, $output, $question)) {
             $output->writeln('   Cancelling...');
 
-            return Command::SUCCESS;
+            return 0;
         }
 
-        $output->writeln('');
+        $ini = new PhpIni(
+            $this->findPhpIniPath($input, $output)
+        );
 
-        $ini = new PhpIni($input->getOption('ini'));
         $output->writeln("   Updating PHP ini: {$ini->getPath()}...");
         $output->writeln('');
         $output->writeln('');

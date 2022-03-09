@@ -11,7 +11,7 @@ class PhpIni
     public function __construct(string $path = null)
     {
         if (! $path) {
-            $path = get_cfg_var('cfg_file_path');
+            $path = reset(static::loaded());
         }
 
         if (! file_exists($path)) {
@@ -19,6 +19,18 @@ class PhpIni
         }
 
         $this->path = $path;
+    }
+
+    public static function loaded(): array
+    {
+        $files = [
+            php_ini_loaded_file(),
+            ...explode(',', php_ini_scanned_files()),
+        ];
+
+        return array_map(function ($file) {
+            return trim($file);
+        }, $files);
     }
 
     public function update(string $optionName, ?string $value): bool
@@ -46,13 +58,6 @@ class PhpIni
         return $this->path;
     }
 
-    /**
-     * Find the option's line.
-     *
-     * @param string $option
-     *
-     * @return string|false
-     */
     protected function findOptionLine($option)
     {
         $lines = file($this->path);
