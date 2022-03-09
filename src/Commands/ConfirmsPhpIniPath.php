@@ -9,7 +9,7 @@ use Symfony\Component\Console\Question\ChoiceQuestion;
 
 trait ConfirmsPhpIniPath
 {
-    protected function findPhpIniPath(InputInterface $input, OutputInterface $output)
+    protected function findPhpIniPath(InputInterface $input, OutputInterface $output): string
     {
         if ($iniPath = $input->getOption('ini')) {
             return $iniPath;
