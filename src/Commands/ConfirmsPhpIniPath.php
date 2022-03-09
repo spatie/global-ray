@@ -19,7 +19,7 @@ trait ConfirmsPhpIniPath
             return reset($iniPaths);
         }
 
-        $question = new ChoiceQuestion('   Multiple PHP ini files have been found. Which one would you like to update?', $iniPaths);
+        $question = new ChoiceQuestion('   Multiple loaded PHP ini files have been found. Which one would you like to update?', $iniPaths);
 
         return $this->getHelper('question')->ask($input, $output, $question);
     }
