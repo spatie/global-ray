@@ -23,14 +23,14 @@ class PhpIni
 
     public static function loaded(): array
     {
-        $files = [
+        $paths = [
             php_ini_loaded_file(),
             ...explode(',', php_ini_scanned_files()),
         ];
 
-        return array_map(function ($file) {
-            return trim($file);
-        }, $files);
+        return array_map(function ($path) {
+            return trim($path);
+        }, $paths);
     }
 
     public function update(string $optionName, ?string $value): bool
