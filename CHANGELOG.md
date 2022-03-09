@@ -2,6 +2,10 @@
 
 All notable changes to `global-ray` will be documented in this file.
 
+## 1.0.3 - 2022-03-09
+
+- A method for installing global-ray manually will now be displayed if updating php.ini fails
+
 ## 1.0.2 - 2022-03-03
 
 - add dump phars for each php version
