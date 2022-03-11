@@ -10,6 +10,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class UninstallCommand extends Command
 {
+    use ConfirmsPhpIniPath;
     use RetriesAsWindowsAdmin;
 
     protected function configure()
@@ -22,8 +23,9 @@ class UninstallCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $ini = new PhpIni($input->getOption('ini'));
-
+        $ini = new PhpIni(
+            $this->findPhpIniPath($input, $output)
+        );
 
         $output->writeln('');
         $output->writeln("  Updating PHP ini: {$ini->getPath()}...");

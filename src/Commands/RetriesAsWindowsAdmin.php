@@ -4,20 +4,20 @@ namespace Spatie\GlobalRay\Commands;
 
 use Spatie\GlobalRay\Support\PhpIni;
 use Spatie\GlobalRay\Support\Platform;
-use Symfony\Component\Console\Input\Input;
-use Symfony\Component\Console\Output\Output;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
 
 trait RetriesAsWindowsAdmin
 {
-    protected function shouldRetryAsWindowsAdmin(PhpIni $ini, Input $input): bool
+    protected function shouldRetryAsWindowsAdmin(PhpIni $ini, InputInterface $input): bool
     {
         return ! is_writeable($ini->getPath())
             && $input->isInteractive()
             && Platform::isWindowsNonAdminUser();
     }
 
-    protected function retryAsWindowsAdmin(PhpIni $ini, Input $input, Output $output): bool
+    protected function retryAsWindowsAdmin(PhpIni $ini, InputInterface $input, OutputInterface $output): bool
     {
         $question = new ConfirmationQuestion('   Retry as Adminstrator? (Y/n)', false);
 
