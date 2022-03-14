@@ -2,6 +2,10 @@
 
 All notable changes to `global-ray` will be documented in this file.
 
+## 1.0.4 - 2022-03-14
+
+- ability to select a loaded `*.ini` file to install to
+
 ## 1.0.3 - 2022-03-09
 
 - A method for installing global-ray manually will now be displayed if updating php.ini fails
