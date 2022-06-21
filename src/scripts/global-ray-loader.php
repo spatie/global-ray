@@ -41,13 +41,13 @@ class PharLoader
     {
         $composerJson = getcwd() . '/composer.json';
 
-        if(strpos($composerJson, 'valet') !== false) {
+        if (strpos($composerJson, 'valet') !== false) {
             $valetConfig = json_decode(file_get_contents($_SERVER['HOME'].'/.config/valet/config.json'));
 
-            foreach($valetConfig->paths as $path) {
+            foreach ($valetConfig->paths as $path) {
                 $composerPath = $path . '/' . str_replace('.' . $valetConfig->tld, '/', $_SERVER['HTTP_HOST']) . 'composer.json';
 
-                if(file_exists($composerPath)) {
+                if (file_exists($composerPath)) {
                     return $composerPath;
                 }
             }
