@@ -2,6 +2,20 @@
 
 All notable changes to `global-ray` will be documented in this file.
 
+## 1.0.5 - 2022-06-21
+
+### What's Changed
+
+- Bump actions/checkout from 2 to 3 by @dependabot in https://github.com/spatie/global-ray/pull/11
+- Bump dependabot/fetch-metadata from 1.3.0 to 1.3.1 by @dependabot in https://github.com/spatie/global-ray/pull/20
+- Look for valet site composer file by @jeffreyvr in https://github.com/spatie/global-ray/pull/23
+
+### New Contributors
+
+- @jeffreyvr made their first contribution in https://github.com/spatie/global-ray/pull/23
+
+**Full Changelog**: https://github.com/spatie/global-ray/compare/1.0.4...1.0.5
+
 ## 1.0.4 - 2022-03-14
 
 - ability to select a loaded `*.ini` file to install to
