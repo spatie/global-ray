@@ -41,8 +41,7 @@ class PharLoader
     {
         $composerJson = getcwd() . '/composer.json';
 
-        // Check if it is Laravel Valet.
-        if(strpos($composerJson, 'valet') != false) {
+        if(strpos($composerJson, 'valet') !== false) {
             $valetConfig = json_decode(file_get_contents($_SERVER['HOME'].'/.config/valet/config.json'));
 
             foreach($valetConfig->paths as $path) {
