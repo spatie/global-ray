@@ -2,6 +2,10 @@
 
 All notable changes to `global-ray` will be documented in this file.
 
+## 1.1.0 - 2023-12-11
+
+- support PHP 8.3
+
 ## 1.0.6 - 2023-01-11
 
 ### What's Changed
