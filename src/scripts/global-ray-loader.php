@@ -43,12 +43,10 @@ class PharLoader
 
         if (strpos($composerJson, 'valet') !== false) {
             $herdConfigPathMacOs = $_SERVER['HOME'] . '/Library/Application Support/Herd/config/valet/config.json';
-            $defaultValetConfigPath = $_SERVER['HOME'] . '/.config/valet/config.json';
+            $configPath = $_SERVER['HOME'] . '/.config/valet/config.json';
 
             if (PHP_OS_FAMILY === 'Darwin' && file_exists($herdConfigPathMacOs)) { // If MacOS and Herd exists
                 $configPath = $herdConfigPathMacOs;
-            } else {
-                $configPath = $defaultValetConfigPath;
             }
 
             $valetConfig = json_decode(file_get_contents($configPath));
