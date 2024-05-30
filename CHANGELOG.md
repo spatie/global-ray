@@ -2,6 +2,20 @@
 
 All notable changes to `global-ray` will be documented in this file.
 
+## 1.1.1 - 2024-05-30
+
+### What's Changed
+
+* Allow Symfony 7.x by @thecaliskan in https://github.com/spatie/global-ray/pull/46
+* fix: on macOS if Herd is installed, adjust the valet config file path accordingly by @wkhayrattee in https://github.com/spatie/global-ray/pull/51
+
+### New Contributors
+
+* @thecaliskan made their first contribution in https://github.com/spatie/global-ray/pull/46
+* @wkhayrattee made their first contribution in https://github.com/spatie/global-ray/pull/51
+
+**Full Changelog**: https://github.com/spatie/global-ray/compare/1.1.0...1.1.1
+
 ## 1.1.0 - 2023-12-11
 
 - support PHP 8.3
