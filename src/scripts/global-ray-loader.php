@@ -39,28 +39,33 @@ class PharLoader
 
     public static function getComposerPath()
     {
-        $composerJson = getcwd() . '/composer.json';
+        $composerPath = getcwd() . '/composer.json';
 
-        if (strpos($composerJson, 'valet') !== false) {
-            $herdConfigPathMacOs = $_SERVER['HOME'] . '/Library/Application Support/Herd/config/valet/config.json';
-            $configPath = $_SERVER['HOME'] . '/.config/valet/config.json';
+        if (strpos($composerPath, 'valet') === false) {
+            return $composerPath;
+        }
 
-            if (PHP_OS_FAMILY === 'Darwin' && file_exists($herdConfigPathMacOs)) { // If MacOS and Herd exists
-                $configPath = $herdConfigPathMacOs;
-            }
+        $valetConfig = json_decode(
+            file_get_contents(static::getConfigPath())
+        );
 
-            $valetConfig = json_decode(file_get_contents($configPath));
+        foreach ($valetConfig->paths as $path) {
+            $projectComposerPath = $path . '/' . str_replace('.' . $valetConfig->tld, '/', $_SERVER['HTTP_HOST']) . 'composer.json';
 
-            foreach ($valetConfig->paths as $path) {
-                $composerPath = $path . '/' . str_replace('.' . $valetConfig->tld, '/', $_SERVER['HTTP_HOST']) . 'composer.json';
-
-                if (file_exists($composerPath)) {
-                    return $composerPath;
-                }
+            if (file_exists($projectComposerPath)) {
+                return $projectComposerPath;
             }
         }
 
-        return $composerJson;
+        return $composerPath;
+    }
+
+    public static function getConfigPath()
+    {
+        $valetConfigPath = $_SERVER['HOME'] . '/.config/valet/config.json';
+        $herdConfigPath = $_SERVER['HOME'] . '/Library/Application Support/Herd/config/valet/config.json';
+
+        return file_exists($herdConfigPath) ? $herdConfigPath : $valetConfigPath;
     }
 }
 
