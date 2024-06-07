@@ -2,6 +2,18 @@
 
 All notable changes to `global-ray` will be documented in this file.
 
+## 1.1.2 - 2024-06-07
+
+### What's Changed
+
+* Add return type declarations by @jklue in https://github.com/spatie/global-ray/pull/52
+
+### New Contributors
+
+* @jklue made their first contribution in https://github.com/spatie/global-ray/pull/52
+
+**Full Changelog**: https://github.com/spatie/global-ray/compare/1.1.1...1.1.2
+
 ## 1.1.1 - 2024-05-30
 
 ### What's Changed
