@@ -21,7 +21,7 @@ class UninstallCommand extends Command
             ->addOption('ini', null, InputOption::VALUE_REQUIRED, 'The full path to the PHP ini that should be updated');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $ini = new PhpIni(
             $this->findPhpIniPath($input, $output)
