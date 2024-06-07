@@ -19,7 +19,7 @@ class BuildCommand extends Command
             ->setDescription('Build the Ray Phar');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $output->writeln('Building phars...');
 
