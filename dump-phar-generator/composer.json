@@ -1,9 +1,9 @@
 {
     "require": {
-        "symfony/var-dumper": "^4.0|^5.0|^6.0|^7.0"
+        "symfony/var-dumper": "^4.0|^5.0|^6.0|^7.0|^8.0"
     },
     "require-dev": {
-        "humbug/box": "^3.15"
+        "humbug/box": "^3.15|^4.0"
     },
     "config": {
         "allow-plugins": {
