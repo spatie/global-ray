@@ -22,7 +22,7 @@ function executeGlobalRay(string $command, array $args = []): Process
     return $process;
 }
 
-function executeCommand(array $command, string $cwd = null): Process
+function executeCommand(array $command, ?string $cwd = null): Process
 {
     $process = new Process($command, $cwd);
 
