@@ -2,6 +2,15 @@
 
 All notable changes to `global-ray` will be documented in this file.
 
+## 1.2.0 - 2025-02-24
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot in https://github.com/spatie/global-ray/pull/57
+* Fix PHP 8.4 issues by @stevebauman in https://github.com/spatie/global-ray/pull/59
+
+**Full Changelog**: https://github.com/spatie/global-ray/compare/1.1.3...1.2.0
+
 ## 1.1.3 - 2024-12-11
 
 - support PHP 8.4
