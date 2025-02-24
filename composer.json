@@ -27,7 +27,7 @@
         "symfony/process": "^4.2|^5.0|^6.0|^7.0"
     },
     "require-dev": {
-        "pestphp/pest": "^1.20"
+        "pestphp/pest": "^1.0|^2.0"
     },
     "bin": [
         "bin/global-ray"
