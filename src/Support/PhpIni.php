@@ -8,7 +8,7 @@ class PhpIni
 {
     protected $path;
 
-    public function __construct(string $path = null)
+    public function __construct(?string $path = null)
     {
         if (! $path) {
             $path = reset(static::loaded());
