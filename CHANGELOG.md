@@ -2,6 +2,18 @@
 
 All notable changes to `global-ray` will be documented in this file.
 
+## 1.2.1 - 2025-02-25
+
+### What's Changed
+
+* Changes implicitly nullable parameter types by @yoeriboven in https://github.com/spatie/global-ray/pull/60
+
+### New Contributors
+
+* @yoeriboven made their first contribution in https://github.com/spatie/global-ray/pull/60
+
+**Full Changelog**: https://github.com/spatie/global-ray/compare/1.2.0...1.2.1
+
 ## 1.2.0 - 2025-02-24
 
 ### What's Changed
