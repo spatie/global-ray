@@ -36,7 +36,7 @@ jobs:
         run: git pull origin main
 
       - name: Push Built Phars
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v6
         with:
           commit_message: Phar build
           file_pattern: ray-phars/*.phar dump-phars/*.phar
