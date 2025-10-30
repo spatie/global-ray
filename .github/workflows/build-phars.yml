@@ -10,14 +10,14 @@ jobs:
       max-parallel: 1
       matrix:
         os: [ubuntu-latest]
-        php: [8.3, 8.2, 8.1, 8.0, 7.4]
+        php: [8.4, 8.3, 8.2, 8.1, 8.0, 7.4]
         stability: [prefer-stable]
 
     name: P${{ matrix.php }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -36,7 +36,7 @@ jobs:
         run: git pull origin main
 
       - name: Push Built Phars
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v6
         with:
           commit_message: Phar build
           file_pattern: ray-phars/*.phar dump-phars/*.phar

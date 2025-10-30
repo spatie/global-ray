@@ -2,6 +2,64 @@
 
 All notable changes to `global-ray` will be documented in this file.
 
+## 1.2.1 - 2025-02-25
+
+### What's Changed
+
+* Changes implicitly nullable parameter types by @yoeriboven in https://github.com/spatie/global-ray/pull/60
+
+### New Contributors
+
+* @yoeriboven made their first contribution in https://github.com/spatie/global-ray/pull/60
+
+**Full Changelog**: https://github.com/spatie/global-ray/compare/1.2.0...1.2.1
+
+## 1.2.0 - 2025-02-24
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot in https://github.com/spatie/global-ray/pull/57
+* Fix PHP 8.4 issues by @stevebauman in https://github.com/spatie/global-ray/pull/59
+
+**Full Changelog**: https://github.com/spatie/global-ray/compare/1.1.3...1.2.0
+
+## 1.1.3 - 2024-12-11
+
+- support PHP 8.4
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 1.6.0 to 2.1.0 by @dependabot in https://github.com/spatie/global-ray/pull/50
+* Bump dependabot/fetch-metadata from 2.1.0 to 2.2.0 by @dependabot in https://github.com/spatie/global-ray/pull/54
+
+**Full Changelog**: https://github.com/spatie/global-ray/compare/1.1.2...1.1.3
+
+## 1.1.2 - 2024-06-07
+
+### What's Changed
+
+* Add return type declarations by @jklue in https://github.com/spatie/global-ray/pull/52
+
+### New Contributors
+
+* @jklue made their first contribution in https://github.com/spatie/global-ray/pull/52
+
+**Full Changelog**: https://github.com/spatie/global-ray/compare/1.1.1...1.1.2
+
+## 1.1.1 - 2024-05-30
+
+### What's Changed
+
+* Allow Symfony 7.x by @thecaliskan in https://github.com/spatie/global-ray/pull/46
+* fix: on macOS if Herd is installed, adjust the valet config file path accordingly by @wkhayrattee in https://github.com/spatie/global-ray/pull/51
+
+### New Contributors
+
+* @thecaliskan made their first contribution in https://github.com/spatie/global-ray/pull/46
+* @wkhayrattee made their first contribution in https://github.com/spatie/global-ray/pull/51
+
+**Full Changelog**: https://github.com/spatie/global-ray/compare/1.1.0...1.1.1
+
 ## 1.1.0 - 2023-12-11
 
 - support PHP 8.3

@@ -39,21 +39,33 @@ class PharLoader
 
     public static function getComposerPath()
     {
-        $composerJson = getcwd() . '/composer.json';
+        $composerPath = getcwd() . '/composer.json';
 
-        if (strpos($composerJson, 'valet') !== false) {
-            $valetConfig = json_decode(file_get_contents($_SERVER['HOME'].'/.config/valet/config.json'));
+        if (strpos($composerPath, 'valet') === false) {
+            return $composerPath;
+        }
 
-            foreach ($valetConfig->paths as $path) {
-                $composerPath = $path . '/' . str_replace('.' . $valetConfig->tld, '/', $_SERVER['HTTP_HOST']) . 'composer.json';
+        $valetConfig = json_decode(
+            file_get_contents(static::getConfigPath())
+        );
 
-                if (file_exists($composerPath)) {
-                    return $composerPath;
-                }
+        foreach ($valetConfig->paths as $path) {
+            $projectComposerPath = $path . '/' . str_replace('.' . $valetConfig->tld, '/', $_SERVER['HTTP_HOST']) . 'composer.json';
+
+            if (file_exists($projectComposerPath)) {
+                return $projectComposerPath;
             }
         }
 
-        return $composerJson;
+        return $composerPath;
+    }
+
+    public static function getConfigPath()
+    {
+        $valetConfigPath = $_SERVER['HOME'] . '/.config/valet/config.json';
+        $herdConfigPath = $_SERVER['HOME'] . '/Library/Application Support/Herd/config/valet/config.json';
+
+        return file_exists($herdConfigPath) ? $herdConfigPath : $valetConfigPath;
     }
 }
 
