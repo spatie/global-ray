@@ -2,6 +2,23 @@
 
 All notable changes to `global-ray` will be documented in this file.
 
+## 1.2.2 - 2025-11-03
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.3.0 to 2.4.0 by @dependabot[bot] in https://github.com/spatie/global-ray/pull/62
+* Bump stefanzweifel/git-auto-commit-action from 5 to 6 by @dependabot[bot] in https://github.com/spatie/global-ray/pull/63
+* Bump actions/checkout from 3 to 5 by @dependabot[bot] in https://github.com/spatie/global-ray/pull/66
+* Update issue template by @AlexVanderbist in https://github.com/spatie/global-ray/pull/69
+* Added Symfony 8 support to all symfony/* packages. by @thecaliskan in https://github.com/spatie/global-ray/pull/71
+* Bump stefanzweifel/git-auto-commit-action from 6 to 7 by @dependabot[bot] in https://github.com/spatie/global-ray/pull/70
+
+### New Contributors
+
+* @AlexVanderbist made their first contribution in https://github.com/spatie/global-ray/pull/69
+
+**Full Changelog**: https://github.com/spatie/global-ray/compare/1.2.1...1.2.2
+
 ## 1.2.1 - 2025-02-25
 
 ### What's Changed
