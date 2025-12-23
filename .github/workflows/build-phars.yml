@@ -32,9 +32,11 @@ jobs:
       - name: Build Phars
         run: composer build
 
+      - name: Pull latest changes
+        run: git pull --rebase --autostash
+
       - name: Push Built Phars
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: Phar build
           file_pattern: ray-phars/*.phar dump-phars/*.phar
-          pull: '--rebase --autostash'
