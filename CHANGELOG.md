@@ -2,6 +2,15 @@
 
 All notable changes to `global-ray` will be documented in this file.
 
+## 1.2.3 - 2025-12-23
+
+### What's Changed
+
+* Bump actions/checkout from 5 to 6 by @dependabot[bot] in https://github.com/spatie/global-ray/pull/73
+* Php 8.5 Support by @stevebauman in https://github.com/spatie/global-ray/pull/75
+
+**Full Changelog**: https://github.com/spatie/global-ray/compare/1.2.2...1.2.3
+
 ## 1.2.2 - 2025-11-03
 
 ### What's Changed
