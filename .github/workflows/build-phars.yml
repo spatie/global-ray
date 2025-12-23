@@ -32,9 +32,6 @@ jobs:
       - name: Build Phars
         run: composer build
 
-      - name: Pull latest
-        run: git pull origin main
-
       - name: Push Built Phars
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
