@@ -37,3 +37,4 @@ jobs:
         with:
           commit_message: Phar build
           file_pattern: ray-phars/*.phar dump-phars/*.phar
+          pull: '--rebase --autostash'
