@@ -3,11 +3,13 @@
 namespace Spatie\GlobalRay\Commands;
 
 use Spatie\GlobalRay\Support\PhpIni;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
+#[AsCommand(name: 'uninstall', description: 'Uninstall Ray globally.')]
 class UninstallCommand extends Command
 {
     use ConfirmsPhpIniPath;
@@ -15,10 +17,12 @@ class UninstallCommand extends Command
 
     protected function configure()
     {
-        $this
-            ->setName('uninstall')
-            ->setDescription('Uninstall Ray globally.')
-            ->addOption('ini', null, InputOption::VALUE_REQUIRED, 'The full path to the PHP ini that should be updated');
+        if (method_exists($this, 'setName')) {
+            $this->setName('uninstall');
+            $this->setDescription('Uninstall Ray globally.');
+        }
+
+        $this->addOption('ini', null, InputOption::VALUE_REQUIRED, 'The full path to the PHP ini that should be updated');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int

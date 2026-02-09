@@ -6,17 +6,20 @@ use Exception;
 use Spatie\GlobalRay\Support\Composer;
 use Spatie\GlobalRay\Support\Dump;
 use Spatie\GlobalRay\Support\Ray;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+#[AsCommand(name: 'build', description: 'Build the Ray Phar')]
 class BuildCommand extends Command
 {
     protected function configure()
     {
-        $this
-            ->setName('build')
-            ->setDescription('Build the Ray Phar');
+        if (method_exists($this, 'setName')) {
+            $this->setName('build');
+            $this->setDescription('Build the Ray Phar');
+        }
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
