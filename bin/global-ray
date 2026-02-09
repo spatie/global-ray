@@ -13,8 +13,10 @@ if (file_exists(__DIR__.'/../../../autoload.php')) {
 }
 
 $app = new Application('Spatie Global Ray Installer', '1.0.0');
-$app->add(new InstallCommand());
-$app->add(new UninstallCommand());
-$app->add(new BuildCommand());
+
+$addCommand = method_exists($app, 'addCommand') ? 'addCommand' : 'add';
+$app->$addCommand(new InstallCommand());
+$app->$addCommand(new UninstallCommand());
+$app->$addCommand(new BuildCommand());
 
 $app->run();
