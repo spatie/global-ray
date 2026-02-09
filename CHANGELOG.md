@@ -2,6 +2,12 @@
 
 All notable changes to `global-ray` will be documented in this file.
 
+## 1.2.4 - 2026-02-09
+
+### What's Changed
+
+- Fix Symfony 8 compatibility (#77, #78): `Application::add()` and `Command::setName()` were removed in Symfony 8.0. Added `#[AsCommand]` attributes and backward-compatible method checks.
+
 ## 1.2.3 - 2025-12-23
 
 ### What's Changed
