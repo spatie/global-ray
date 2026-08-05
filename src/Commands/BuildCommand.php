@@ -14,7 +14,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 #[AsCommand(name: 'build', description: 'Build the Ray Phar')]
 class BuildCommand extends Command
 {
-    protected function configure()
+    protected function configure(): void
     {
         if (method_exists($this, 'setName')) {
             $this->setName('build');
