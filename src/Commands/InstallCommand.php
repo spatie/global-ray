@@ -16,7 +16,7 @@ class InstallCommand extends Command
     use ConfirmsPhpIniPath;
     use RetriesAsWindowsAdmin;
 
-    protected function configure()
+    protected function configure(): void
     {
         if (method_exists($this, 'setName')) {
             $this->setName('install');
