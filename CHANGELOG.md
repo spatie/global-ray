@@ -2,6 +2,14 @@
 
 All notable changes to `global-ray` will be documented in this file.
 
+## 1.2.5 - 2026-08-07
+
+### What's Changed
+
+* Support void return type for Symfony configure method by @daverogers in https://github.com/spatie/global-ray/pull/83
+
+**Full Changelog**: https://github.com/spatie/global-ray/compare/1.2.4...1.2.5
+
 ## 1.2.4 - 2026-02-09
 
 ### What's Changed
