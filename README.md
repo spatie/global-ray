@@ -6,7 +6,7 @@
 
 This package can be installed **globally** to send debug output from **any** PHP app to [Ray](https://myray.app), the desktop debugging app from [Spatie](https://spatie.be/). 
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/global-ray.jpg?t=1769610085" width="500px" />](https://spatie.be/github-ad-click/global-ray)
+[<img src="https://spatie.be/github-ad-image/global-ray.jpg" width="500px" />](https://spatie.be/github-ad-click/global-ray)
 
 Ray is a desktop debugging app that keeps the instant feedback you get from console.log() and dump() but lets you use the same debugging syntax across Laravel, PHP, JavaScript and more frameworks and languages.
 
